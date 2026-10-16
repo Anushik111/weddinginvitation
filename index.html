@@ -21,13 +21,9 @@
   --gold: #ad8a5d;
 }
 
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
@@ -37,9 +33,7 @@ body {
   overflow-x: hidden;
 }
 
-button, input, select {
-  font: inherit;
-}
+button, input, select { font: inherit; }
 
 .cover {
   min-height: 100svh;
@@ -66,24 +60,6 @@ button, input, select {
   outline-offset: 7px;
   background: rgba(255,253,249,.4);
   animation: fadeIn 1.4s ease both;
-}
-
-/* ՆԿԱՐԸ 1-ԻՆ ԷՋՈՒՄ */
-.cover-photo-wrap {
-  width: min(100%, 360px);
-  height: 260px;
-  margin: 0 auto 27px;
-  overflow: hidden;
-  background: var(--beige);
-  animation: fadeIn 1.5s ease both;
-}
-
-.cover-photo {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
 }
 
 .ornament {
@@ -157,9 +133,7 @@ button, input, select {
   animation: fadeIn 1s ease both;
 }
 
-.invitation.show {
-  display: block;
-}
+.invitation.show { display: block; }
 
 .section {
   width: min(calc(100% - 32px), 1000px);
@@ -197,9 +171,7 @@ button, input, select {
   margin: 20px 0;
 }
 
-.names-display span {
-  color: var(--gold);
-}
+.names-display span { color: var(--gold); }
 
 .divider {
   width: 80px;
@@ -208,7 +180,24 @@ button, input, select {
   margin: 28px auto;
 }
 
-/* ՈՒՂՂԱՀԱՅԱՑ ՎԻԴԵՈ՝ 9:16 */
+/* Երկրորդ էջի նկարը */
+.second-page-photo {
+  width: min(calc(100% - 28px), 600px);
+  margin: 0 auto;
+  padding: 25px 0 10px;
+  text-align: center;
+}
+
+.second-page-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: none;
+  object-fit: contain;
+  object-position: center;
+  margin: 0 auto;
+}
+
 .video-section {
   width: 100%;
   margin: 0 auto;
@@ -295,9 +284,7 @@ button, input, select {
   transition: transform .7s ease;
 }
 
-.event-card:hover .event-image {
-  transform: scale(1.04);
-}
+.event-card:hover .event-image { transform: scale(1.04); }
 
 .event-time {
   font-family: "Cormorant Garamond", serif;
@@ -336,13 +323,9 @@ button, input, select {
 }
 
 .rsvp .section-title,
-.rsvp .eyebrow {
-  text-align: center;
-}
+.rsvp .eyebrow { text-align: center; }
 
-.form-group {
-  margin-bottom: 18px;
-}
+.form-group { margin-bottom: 18px; }
 
 .form-group label {
   display: block;
@@ -372,9 +355,7 @@ button, input, select {
   transition: .3s ease;
 }
 
-.submit-button:hover {
-  background: var(--brown);
-}
+.submit-button:hover { background: var(--brown); }
 
 .form-note {
   text-align: center;
@@ -426,23 +407,15 @@ footer {
   box-shadow: 0 4px 18px rgba(73,56,47,.12);
 }
 
-.music-button.show {
-  display: flex;
-}
+.music-button.show { display: flex; }
 
 .music-button.playing {
   animation: rotateMusic 5s linear infinite;
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes rotateMusic {
@@ -455,19 +428,9 @@ footer {
     padding: 25px 17px;
   }
 
-  .cover-photo-wrap {
-    height: 230px;
-    width: min(100%, 330px);
-    margin-bottom: 22px;
-  }
+  .cover-label { letter-spacing: 2px; }
 
-  .cover-label {
-    letter-spacing: 2px;
-  }
-
-  .section {
-    padding: 55px 0;
-  }
+  .section { padding: 55px 0; }
 
   .video-section {
     width: 100%;
@@ -486,16 +449,15 @@ footer {
     gap: 22px;
   }
 
-  .event-card {
-    padding: 12px 12px 25px;
-  }
+  .event-card { padding: 12px 12px 25px; }
 
-  .event-image-wrap {
-    height: 280px;
-  }
+  .event-image-wrap { height: 280px; }
 
-  .rsvp {
-    padding: 35px 18px;
+  .rsvp { padding: 35px 18px; }
+
+  .second-page-photo {
+    width: calc(100% - 24px);
+    padding-top: 18px;
   }
 }
 
@@ -512,18 +474,9 @@ footer {
 
 <body>
 
+<!-- ԱՌԱՋԻՆ ԷՋ․ ԱՌԱՆՑ ՆԿԱՐԻ -->
 <section class="cover" id="cover">
   <div class="cover-card">
-
-    <!-- GitHub-ում նկարի անունը դարձրու cover-photo.jpg -->
-    <div class="cover-photo-wrap">
-      <img
-        class="cover-photo"
-        src="cover-photo.jpg"
-        alt="Հարսանյաց հրավիրատոմսի գլխավոր նկար"
-        fetchpriority="high"
-      >
-    </div>
 
     <div class="ornament">❦</div>
     <div class="cover-label">ՀԱՐՍԱՆՅԱՑ ՀՐԱՎԵՐ</div>
@@ -550,6 +503,15 @@ footer {
 </section>
 
 <main class="invitation" id="invitation">
+
+  <!-- ԵՐԿՐՈՐԴ ԷՋԻ ՆԿԱՐԸ՝ ԱՄԵՆԱՍԿԶԲՈՒՄ, ՏԵՔՍՏԻՑ ԱՌԱՋ -->
+  <section class="second-page-photo">
+    <img
+      src="cover-photo.jpg"
+      alt="Հարսանյաց նկար"
+      fetchpriority="high"
+    >
+  </section>
 
   <section class="section">
     <div class="eyebrow">ՍԻՐՈՎ ՀՐԱՎԻՐՈՒՄ ԵՆՔ</div>
@@ -708,7 +670,7 @@ footer {
 
 </main>
 
-<!-- ԵՐԱԺՇՏՈՒԹՅՈՒՆ․ Dropbox-ի հղումը -->
+<!-- ԵՐԱԺՇՏՈՒԹՅՈՒՆ․ DROPBOX -->
 <audio id="backgroundMusic" loop preload="auto">
   <source
     src="https://www.dropbox.com/scl/fi/a2bxp2c1fqkpzz3m2pept/wedding.mp3.mp3?rlkey=pc00w4gf9pef9howaghtqpxpk&raw=1"
@@ -738,11 +700,10 @@ coupleVideo.disablePictureInPicture = true;
 
 async function startVideo() {
   coupleVideo.muted = true;
-
   try {
     await coupleVideo.play();
   } catch (error) {
-    // Ավտոմատ նվագարկումը կարող է կախված լինել սարքի կարգավորումներից։
+    console.warn("Տեսանյութը չմիացավ ավտոմատ։", error);
   }
 }
 
@@ -767,16 +728,10 @@ openButton.addEventListener("click", async () => {
 
   window.scrollTo({ top: 0, behavior: "smooth" });
 
-  await Promise.all([
+  await Promise.allSettled([
     startVideo(),
     startMusic()
   ]);
-});
-
-coupleVideo.addEventListener("volumechange", () => {
-  if (!coupleVideo.muted) {
-    coupleVideo.muted = true;
-  }
 });
 
 musicButton.addEventListener("click", async () => {
@@ -805,7 +760,7 @@ document.getElementById("rsvpForm").addEventListener("submit", (event) => {
     "Մասնակցություն՝ " + attendance + "\n" +
     "Հյուրերի քանակ՝ " + guestCount;
 
-  // X-երը փոխարինեք իրական WhatsApp համարով՝ առանց + նշանի։
+  // Փոխարինեք X-երը ձեր իրական WhatsApp համարով՝ առանց + նշանի։
   const whatsappNumber = "374XXXXXXXX";
 
   if (whatsappNumber === "374XXXXXXXX") {
