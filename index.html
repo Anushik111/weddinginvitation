@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="hy">
 <head>
@@ -33,7 +34,7 @@ button,input,select,textarea{font:inherit}
 .section-title{text-align:center;font-weight:400;font-size:27px;color:var(--green);margin:0 0 12px}
 .section-subtitle{text-align:center;color:#857c6a;font-size:14px;line-height:2;margin:0 auto 30px}
 .events{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
-.event{text-align:center;border:1px solid #d9cdb9;padding:20px 14px 24px;background:#fffdf9;box-shadow:0 8px 25px #403b2c0a}
+.event{text-align:center;border:1px solid #d9cdb9;padding:20px 14px 24px;background:#fffdf9;box-shadow:0 8px 25px #403b2c0a;min-width:0}
 .event-number{color:var(--gold);font-family:"Playfair Display",serif;font-size:27px;margin-bottom:8px}
 .event h3{font-weight:500;font-size:17px;color:var(--green);margin:8px 0}
 .event-time{font-size:15px;margin:8px 0 18px}
@@ -76,8 +77,8 @@ footer{text-align:center;padding:30px 16px;color:var(--green);line-height:2;bord
 <section class="cover" id="cover">
  <div class="cover-card">
   <div class="eyebrow">ՍԻՐՈՒՄ ԵՆՔ ԵՎ ՀՐԱՎԻՐՈՒՄ</div>
-  <video class="cover-video" autoplay muted loop playsinline controls preload="metadata" poster="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1000&q=85">
-   <source src="assets/couple.mp4" type="video/mp4">
+  <video class="cover-video" autoplay muted loop playsinline controls preload="metadata">
+   <source src="couple.mp4" type="video/mp4">
    Ձեր դիտարկիչը չի աջակցում տեսանյութի ցուցադրմանը։
   </video>
   <h1 class="names">Արամ <span class="ampersand">&</span> Արմինա</h1>
@@ -104,8 +105,8 @@ footer{text-align:center;padding:30px 16px;color:var(--green);line-height:2;bord
   <h2 class="section-title">Արամ և Արմինա</h2>
   <p class="section-subtitle">Մեր սիրո պատմության ամենագեղեցիկ էջը</p>
   <div class="couple-frame">
-   <video class="couple-main-video" autoplay muted loop playsinline controls preload="metadata" poster="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=85">
-    <source src="assets/couple.mp4" type="video/mp4">
+   <video class="couple-main-video" autoplay muted loop playsinline controls preload="metadata">
+    <source src="couple.mp4" type="video/mp4">
     Ձեր դիտարկիչը չի աջակցում տեսանյութի ցուցադրմանը։
    </video>
    <div class="couple-caption">Սերը երկու սրտերի հանդիպումը չէ միայն, այլ ամեն օր միմյանց նորից ընտրելու ամենագեղեցիկ որոշումը։</div>
@@ -124,14 +125,14 @@ footer{text-align:center;padding:30px 16px;color:var(--green);line-height:2;bord
    <article class="event">
     <div class="event-number">02</div>
     <h3>Սուրբ Սարգիս եկեղեցի</h3>
-    <img class="place-photo" src="assets/church.jpg" alt="Սուրբ Սարգիս եկեղեցի">
+    <img class="place-photo" src="church.jpg" alt="Սուրբ Սարգիս եկեղեցի">
     <p class="event-time">Ժամը՝ 13:00</p>
     <a class="map-button" href="https://yandex.com/maps/-/CXBpJC-U" target="_blank" rel="noopener">Գտնել քարտեզում ↗</a>
    </article>
    <article class="event">
     <div class="event-number">03</div>
     <h3>Rubina Hall Restaurant</h3>
-    <img class="place-photo" src="assets/restaurant.png" alt="Rubina Hall Restaurant">
+    <img class="place-photo" src="restaurant.png" alt="Rubina Hall Restaurant">
     <p class="event-time">Ժամը՝ 17:00</p>
     <a class="map-button" href="https://yandex.com/maps/-/CXBpFGIS" target="_blank" rel="noopener">Գտնել քարտեզում ↗</a>
    </article>
@@ -198,12 +199,14 @@ openButton.addEventListener("click",()=>{
  window.scrollTo({top:0,behavior:"auto"});
  music.play().catch(()=>{});
 });
+
 musicButton.addEventListener("click",async()=>{
  if(music.paused){
   try{await music.play();musicButton.textContent="♫";}
-  catch(e){alert("Ստուգեք՝ music/wedding.mp3 ֆայլը տեղադրված է։");}
+  catch(e){alert("Երաժշտության ֆայլը դեռ ավելացված չէ։");}
  }else{music.pause();musicButton.textContent="♪";}
 });
+
 document.getElementById("rsvpForm").addEventListener("submit",e=>{
  e.preventDefault();
  const firstName=document.getElementById("firstName").value.trim();
