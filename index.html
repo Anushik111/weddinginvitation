@@ -3,271 +3,460 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Արամ և Արմինա</title>
+<title>Արամ և Արմինա — Հարսանեկան հրավիրատոմս</title>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Noto+Serif+Armenian:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
+:root {
+  --cream: #fbf6ef;
+  --green: #596b50;
+  --gold: #b99a6a;
+  --text: #514b40;
+  --pink: #ead8d0;
+}
+
 * { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
-  background: #faf6ef;
-  color: #4c5946;
+  background: var(--cream);
+  color: var(--text);
   font-family: "Noto Serif Armenian", serif;
 }
 
+button, input, select, textarea { font: inherit; }
+
+button, a { -webkit-tap-highlight-color: transparent; }
+
 .cover {
-  min-height: 100vh;
+  min-height: 100svh;
   display: flex;
-  align-items: center;
   justify-content: center;
-  padding: 30px 20px;
+  align-items: center;
+  padding: 32px 22px;
+  position: relative;
+  overflow: hidden;
   background:
-    linear-gradient(#faf6ef75, #faf6ef85),
+    linear-gradient(#fbf6ef8c, #fbf6efb8),
     url("https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=1600&q=85")
     center / cover;
 }
 
-.card {
+.cover::before, .cover::after {
+  content: "❀";
+  position: absolute;
+  font-size: clamp(100px, 22vw, 220px);
+  color: #7d906f;
+  opacity: .45;
+  pointer-events: none;
+}
+
+.cover::before {
+  top: -55px;
+  left: -25px;
+  transform: rotate(-28deg);
+}
+
+.cover::after {
+  right: -20px;
+  bottom: -65px;
+  transform: rotate(25deg);
+}
+
+.frame {
+  position: relative;
+  z-index: 1;
   width: min(100%, 500px);
-  padding: 35px 25px;
+  padding: 30px 23px 35px;
   text-align: center;
-  background: #fffdf8ed;
-  border: 1px solid #c4ad83;
-  outline: 1px solid #c4ad83;
+  background: #fffaf3eF;
+  border: 1px solid var(--gold);
+  outline: 1px solid var(--gold);
   outline-offset: 6px;
 }
 
-.small {
+.eyebrow {
+  color: var(--green);
   font-size: 11px;
-  letter-spacing: 4px;
+  letter-spacing: 3px;
   line-height: 2.2;
 }
 
-.photo {
-  display: block;
-  width: 100%;
-  height: 290px;
-  margin: 25px auto;
-  object-fit: cover;
-}
-
 .names {
-  color: #52684d;
-  font-size: clamp(30px, 7vw, 44px);
+  font-size: clamp(34px, 8vw, 51px);
+  color: var(--green);
   font-weight: 300;
-  line-height: 1.6;
-  margin: 15px 0;
+  line-height: 1.5;
+  margin: 18px 0;
 }
 
 .amp {
-  color: #b89a67;
   font-family: "Great Vibes", cursive;
+  color: var(--gold);
   font-size: 1.15em;
 }
 
 .date {
-  color: #9b825c;
-  letter-spacing: 5px;
-  margin: 20px 0;
+  color: #967d57;
+  letter-spacing: 4px;
+  margin: 18px 0;
+  font-size: 14px;
 }
 
-button {
-  background: #52684d;
-  border: 1px solid #52684d;
+.intro {
+  font-size: 14px;
+  line-height: 2.1;
+}
+
+.video-frame {
+  width: 100%;
+  margin: 22px auto;
+  overflow: hidden;
+  background: #e9dfd2;
+  border: 1px solid #d6c4a5;
+}
+
+.couple-video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  max-height: 430px;
+  object-fit: cover;
+  background: #e9dfd2;
+}
+
+.btn {
+  display: inline-block;
+  border: 1px solid var(--green);
+  background: var(--green);
   color: white;
-  padding: 13px 25px;
+  text-decoration: none;
+  padding: 13px 23px;
   cursor: pointer;
-  font-family: inherit;
   font-size: 13px;
+  transition: .25s;
 }
 
-.page { display: none; }
-.page.show { display: block; }
+.btn:hover { background: #3f5339; }
+
+.open-btn { margin-top: 15px; }
+
+.invitation { display: none; }
+.invitation.visible { display: block; }
+
+.invitation > section {
+  animation: reveal .8s ease both;
+}
+
+@keyframes reveal {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero {
+  padding: 75px 20px 60px;
+  text-align: center;
+  background:
+    linear-gradient(#fbf6efcf, #fbf6efdc),
+    url("https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=1500&q=85")
+    center / cover;
+}
+
+.hero h2, .section-title {
+  color: var(--green);
+  font-weight: 300;
+  font-size: clamp(25px, 5vw, 34px);
+}
+
+.hero p, .description {
+  max-width: 650px;
+  margin: 20px auto;
+  font-size: 14px;
+  line-height: 2.2;
+}
 
 .section {
   padding: 55px 20px;
   text-align: center;
 }
 
-.section h2 {
-  font-weight: 300;
-  font-size: 27px;
-  color: #52684d;
+.section-title { margin: 0 0 15px; }
+
+.section-subtitle {
+  font-size: 13px;
+  color: #817665;
+  line-height: 2;
+  margin: 0 auto 30px;
 }
 
-.text {
-  max-width: 650px;
-  margin: 20px auto;
-  line-height: 2.2;
+.photo-section {
+  background: #f0e8dc;
+}
+
+.video-inner {
+  width: min(100%, 650px);
+  padding: 10px;
+  margin: 25px auto 0;
+  background: #fffaf3;
+  border: 1px solid var(--gold);
+}
+
+.video-inner .couple-video {
+  max-height: 600px;
+  aspect-ratio: 4 / 5;
+}
+
+.video-caption {
+  padding: 17px 8px 8px;
+  color: var(--green);
   font-size: 14px;
+  line-height: 2;
 }
 
 .events {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 18px;
-  max-width: 950px;
-  margin: 30px auto;
+  max-width: 1000px;
+  margin: 30px auto 0;
 }
 
 .event {
-  background: #fffdf8;
-  border: 1px solid #e2d6c2;
-  padding: 24px 15px;
+  padding: 22px 15px 25px;
+  background: #fffaf4;
+  border: 1px solid #e1d3bf;
+}
+
+.event-number {
+  color: var(--gold);
+  font-size: 27px;
+  font-family: Georgia, serif;
 }
 
 .event h3 {
-  color: #52684d;
+  color: var(--green);
   font-weight: 400;
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+.event-time {
+  font-size: 14px;
+  margin: 12px 0 18px;
 }
 
 .event img {
   width: 100%;
-  height: 170px;
+  height: 190px;
+  display: block;
   object-fit: cover;
-  margin: 12px 0;
+  margin: 15px 0;
+  background: #e9dfd2;
 }
 
-.event a {
+.map-link {
   display: inline-block;
-  color: #52684d;
+  padding: 10px 14px;
+  color: var(--green);
+  border: 1px solid var(--gold);
+  text-decoration: none;
   font-size: 12px;
-  margin-top: 10px;
 }
 
 .quote {
-  background: #edf0e7;
-  color: #52684d;
-  padding: 45px 20px;
-  line-height: 2.2;
+  background: #e9eee3;
+  padding: 48px 23px;
+  color: var(--green);
   text-align: center;
+  font-size: 16px;
+  line-height: 2.2;
 }
 
 .rsvp {
-  background: #f1e9dc;
+  background: #f1e9dd;
 }
 
-form {
-  max-width: 520px;
-  margin: auto;
+.form {
+  max-width: 560px;
+  margin: 25px auto 0;
   text-align: left;
 }
 
-label {
+.field {
   display: block;
-  margin: 15px 0;
   font-size: 13px;
+  margin-bottom: 17px;
 }
 
-input, select, textarea {
+.field input, .field select, .field textarea {
+  display: block;
   width: 100%;
-  padding: 12px;
-  margin-top: 7px;
-  border: 1px solid #d8cbb7;
-  background: #fffdf8;
-  font-family: inherit;
+  margin-top: 8px;
+  padding: 13px;
+  border: 1px solid #d8cbb8;
+  background: #fffaf4;
+  color: var(--text);
+  border-radius: 0;
 }
 
-textarea {
-  min-height: 80px;
+.field textarea {
+  min-height: 90px;
+  resize: vertical;
 }
 
 .submit {
   width: 100%;
-  margin-top: 10px;
+  margin-top: 5px;
 }
-
-.music {
-  position: fixed;
-  bottom: 18px;
-  right: 18px;
-  display: none;
-  border-radius: 50%;
-  width: 48px;
-  height: 48px;
-  padding: 0;
-  font-size: 21px;
-  z-index: 10;
-}
-
-.music.show { display: block; }
 
 footer {
-  padding: 30px 15px;
+  padding: 32px 18px;
   text-align: center;
-  color: #52684d;
+  line-height: 2.2;
+  color: var(--green);
 }
 
-@media(max-width: 700px) {
+.footer-names {
+  font-size: 30px;
+}
+
+.music-btn {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 10;
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  background: var(--green);
+  color: white;
+  font-size: 21px;
+  cursor: pointer;
+  display: none;
+}
+
+.music-btn.visible { display: block; }
+
+@media (max-width: 700px) {
   .events { grid-template-columns: 1fr; }
-  .photo { height: 240px; }
-  .event img { height: 220px; }
+  .event { padding: 22px; }
+  .event img { height: 230px; }
+  .section { padding: 42px 18px; }
+  .frame { padding: 27px 18px 30px; }
 }
 </style>
 </head>
 
 <body>
 
+<!-- ԲԱՑՄԱՆ ԷՋ -->
 <section class="cover" id="cover">
-  <div class="card">
-    <div class="small">ՍԻՐՈՎ ՀՐԱՎԻՐՈՒՄ ԵՆՔ</div>
-
-    <img class="photo"
-      src="/images/couple.jpg"
-      alt="Արամ և Արմինա"
-      onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=85';">
+  <div class="frame">
+    <div class="eyebrow">ՄԵՐ ՍԻՐՈ ՊԱՏՄՈՒԹՅՈՒՆԸ</div>
 
     <h1 class="names">Արամ <span class="amp">&</span> Արմինա</h1>
+
     <div class="date">28 · 08 · 2026</div>
 
-    <p class="text">Մեր կյանքի ամենագեղեցիկ օրը ցանկանում ենք կիսել Ձեզ հետ։</p>
+    <div class="video-frame">
+      <video class="couple-video" autoplay muted loop playsinline controls>
+        <source src="/videos/couple.mp4" type="video/mp4">
+        Ձեր դիտարկիչը չի աջակցում վիդեոյի ցուցադրումը։
+      </video>
+    </div>
 
-    <button onclick="openInvitation()">Բացել հրավիրատոմսը ♡</button>
+    <p class="intro">
+      Սիրով հրավիրում ենք Ձեզ՝ մեզ հետ կիսելու
+      մեր կյանքի ամենագեղեցիկ օրը։
+    </p>
+
+    <button class="btn open-btn" id="openBtn" type="button">
+      Բացել հրավիրատոմսը ♡
+    </button>
   </div>
 </section>
 
-<audio id="music" loop>
+<audio id="weddingMusic" loop preload="none">
   <source src="/music/wedding.mp3" type="audio/mpeg">
 </audio>
 
-<button class="music" id="musicButton" onclick="toggleMusic()">♫</button>
+<button class="music-btn" id="musicBtn" type="button" aria-label="Երաժշտություն">
+  ♫
+</button>
 
-<main class="page" id="page">
+<!-- ՀՐԱՎԻՐԱՏՈՄՍԻ ՆԵՐՔԻՆ ԷՋ -->
+<main class="invitation" id="invitation">
 
-  <section class="section">
-    <div class="small">ՄԵՐ ՀԱՏՈՒԿ ՕՐԸ</div>
-    <h2>Արամ և Արմինա</h2>
-    <p class="text">
-      Սիրով հրավիրում ենք Ձեզ ներկա գտնվելու մեր հարսանեկան
-      արարողությանը և մեզ հետ կիսելու այս գեղեցիկ օրը։
+  <section class="hero">
+    <div class="eyebrow">ՍԻՐՈՎ ՀՐԱՎԻՐՈՒՄ ԵՆՔ</div>
+    <h2>Մեր հարսանիքին</h2>
+    <p>
+      Մեր սրտերի միությունը նշելու այս գեղեցիկ օրը
+      ցանկանում ենք անցկացնել մեր հարազատների ու ընկերների հետ։
+      Ձեր ներկայությունը մեր ուրախության ամենաթանկ մասն է։
     </p>
     <div class="date">28 · 08 · 2026</div>
+    <div class="footer-names">Արամ <span class="amp">&</span> Արմինա</div>
+  </section>
+
+  <section class="section photo-section">
+    <h2 class="section-title">Մեր փոքրիկ աշխարհը</h2>
+    <p class="section-subtitle">
+      Մեր հիշողությունների մի փոքրիկ պատառիկ՝ Ձեզ համար։
+    </p>
+
+    <div class="video-inner">
+      <video class="couple-video" controls playsinline preload="metadata">
+        <source src="/videos/couple.mp4" type="video/mp4">
+        Ձեր դիտարկիչը չի աջակցում վիդեոյի ցուցադրումը։
+      </video>
+      <div class="video-caption">
+        Սերը երկու սրտերի հանդիպումը չէ միայն, այլ ամեն օր միմյանց նորից ընտրելու ամենագեղեցիկ որոշումը։
+      </div>
+    </div>
   </section>
 
   <section class="section">
-    <h2>Օրվա ծրագիրը</h2>
+    <h2 class="section-title">Օրվա ծրագիրը</h2>
+    <p class="section-subtitle">
+      Սիրով սպասում ենք Ձեզ՝ մեր տոնը միասին նշելու։
+    </p>
 
     <div class="events">
+
       <article class="event">
+        <div class="event-number">01</div>
         <h3>Հարսի տուն</h3>
-        <p>Ժամը՝ 10:00</p>
+        <p class="event-time">Ժամը՝ 10:00</p>
       </article>
 
       <article class="event">
+        <div class="event-number">02</div>
         <h3>Սուրբ Սարգիս եկեղեցի</h3>
-        <img src="/images/church.jpg" alt="Սուրբ Սարգիս եկեղեցի">
-        <p>Ժամը՝ 13:00</p>
-        <a href="https://www.google.com/maps/search/?api=1&query=Saint+Sarkis+Church+Armenia" target="_blank">Բացել քարտեզը ↗</a>
+        <img src="/images/church.jpg" alt="Սուրբ Սարգիս եկեղեցի"
+             onerror="this.style.display='none'">
+        <p class="event-time">Ժամը՝ 13:00</p>
+        <a class="map-link"
+           href="https://www.google.com/maps/search/?api=1&query=Saint+Sarkis+Church+Armenia"
+           target="_blank" rel="noopener">Բացել քարտեզը ↗</a>
       </article>
 
       <article class="event">
+        <div class="event-number">03</div>
         <h3>Rubina Hall Restaurant</h3>
-        <img src="/images/restaurant.jpg" alt="Rubina Hall Restaurant">
-        <p>Ժամը՝ 17:00</p>
-        <a href="https://www.google.com/maps/search/?api=1&query=Rubina+Hall+Restaurant+Armenia" target="_blank">Բացել քարտեզը ↗</a>
+        <img src="/images/restaurant.jpg" alt="Ռեստորան"
+             onerror="this.style.display='none'">
+        <p class="event-time">Ժամը՝ 17:00</p>
+        <a class="map-link"
+           href="https://www.google.com/maps/search/?api=1&query=Rubina+Hall+Restaurant+Armenia"
+           target="_blank" rel="noopener">Բացել քարտեզը ↗</a>
       </article>
+
     </div>
   </section>
 
@@ -275,40 +464,49 @@ footer {
     «Սերը երկու սրտերի հանդիպումը չէ միայն,
     այլ ամեն օր միմյանց նորից ընտրելու
     ամենագեղեցիկ որոշումը։»
+    <br><span class="amp">Արամ և Արմինա</span>
   </section>
 
   <section class="section rsvp">
-    <h2>Հաստատեք Ձեր ներկայությունը</h2>
-    <p class="text">Խնդրում ենք հայտնել՝ արդյոք կմիանաք մեզ այս օրը։</p>
+    <h2 class="section-title">Հաստատեք Ձեր ներկայությունը</h2>
+    <p class="section-subtitle">
+      Խնդրում ենք լրացնել տվյալները և հայտնել՝
+      արդյոք կմիանաք մեզ մեր գեղեցիկ օրը։
+    </p>
 
-    <form id="rsvpForm">
-      <label>Անուն *
-        <input id="firstName" required>
+    <form class="form" id="rsvpForm">
+      <label class="field">
+        Անուն *
+        <input id="firstName" required placeholder="Ձեր անունը">
       </label>
 
-      <label>Ազգանուն *
-        <input id="lastName" required>
+      <label class="field">
+        Ազգանուն *
+        <input id="lastName" required placeholder="Ձեր ազգանունը">
       </label>
 
-      <label>Ու՞մ կողմից եք հրավիրված *
+      <label class="field">
+        Ու՞մ կողմից եք հրավիրված *
         <select id="invitedBy" required>
-          <option value="">Ընտրեք</option>
+          <option value="">Ընտրեք տարբերակը</option>
           <option>Հարսի կողմից</option>
           <option>Փեսայի կողմից</option>
           <option>Երկուսի կողմից</option>
         </select>
       </label>
 
-      <label>Կմասնակցե՞ք *
+      <label class="field">
+        Կմասնակցե՞ք մեր տոնին *
         <select id="attendance" required>
-          <option value="">Ընտրեք</option>
+          <option value="">Ընտրեք պատասխանը</option>
           <option>Այո, սիրով կմասնակցեմ</option>
           <option>Ցավոք, չեմ կարողանա մասնակցել</option>
         </select>
       </label>
 
-      <label>Հյուրերի քանակը
-        <select id="guests">
+      <label class="field">
+        Հյուրերի քանակը
+        <select id="guestCount">
           <option>1</option>
           <option>2</option>
           <option>3</option>
@@ -317,16 +515,19 @@ footer {
         </select>
       </label>
 
-      <label>Մեկնաբանություն
-        <textarea id="comments"></textarea>
+      <label class="field">
+        Մեկնաբանություն
+        <textarea id="comments" placeholder="Ցանկության դեպքում..."></textarea>
       </label>
 
-      <button class="submit" type="submit">Ուղարկել պատասխանը ♡</button>
+      <button class="btn submit" type="submit">
+        Ուղարկել պատասխանը ♡
+      </button>
     </form>
   </section>
 
   <footer>
-    <h2>Արամ <span class="amp">&</span> Արմինա</h2>
+    <div class="footer-names">Արամ <span class="amp">&</span> Արմինա</div>
     Սիրով սպասում ենք Ձեզ
     <div class="date">28 · 08 · 2026</div>
   </footer>
@@ -334,43 +535,53 @@ footer {
 </main>
 
 <script>
-function openInvitation() {
-  document.getElementById("cover").style.display = "none";
-  document.getElementById("page").classList.add("show");
+const cover = document.getElementById("cover");
+const invitation = document.getElementById("invitation");
+const music = document.getElementById("weddingMusic");
+const musicBtn = document.getElementById("musicBtn");
 
-  const music = document.getElementById("music");
-  const musicButton = document.getElementById("musicButton");
-  musicButton.classList.add("show");
+document.getElementById("openBtn").addEventListener("click", async () => {
+  cover.style.display = "none";
+  invitation.classList.add("visible");
+  musicBtn.classList.add("visible");
 
-  music.play().catch(() => {});
-  window.scrollTo(0, 0);
-}
+  window.scrollTo({ top: 0, behavior: "instant" });
 
-function toggleMusic() {
-  const music = document.getElementById("music");
+  try {
+    await music.play();
+  } catch (e) {
+    // Որոշ հեռախոսներ կարող են արգելել ավտոմատ երաժշտությունը։
+  }
+});
 
+musicBtn.addEventListener("click", async () => {
   if (music.paused) {
-    music.play().catch(() => {
-      alert("Ստուգեք music/wedding.mp3 ֆայլի առկայությունը։");
-    });
+    try {
+      await music.play();
+    } catch (e) {
+      alert("Ստուգեք՝ public/music/wedding.mp3 ֆայլը տեղադրված է։");
+    }
   } else {
     music.pause();
   }
-}
+});
 
-document.getElementById("rsvpForm").addEventListener("submit", function(e) {
+document.getElementById("rsvpForm").addEventListener("submit", (e) => {
   e.preventDefault();
 
   const message =
-    "Արամ և Արմինա — RSVP\n\n" +
+    "Արամ և Արմինա — Հարսանեկան հրավիրատոմս\n\n" +
     "Անուն՝ " + document.getElementById("firstName").value + "\n" +
     "Ազգանուն՝ " + document.getElementById("lastName").value + "\n" +
     "Հրավիրված է՝ " + document.getElementById("invitedBy").value + "\n" +
     "Մասնակցություն՝ " + document.getElementById("attendance").value + "\n" +
-    "Հյուրերի քանակ՝ " + document.getElementById("guests").value + "\n" +
+    "Հյուրերի քանակ՝ " + document.getElementById("guestCount").value + "\n" +
     "Մեկնաբանություն՝ " + document.getElementById("comments").value;
 
-  window.open("https://wa.me/?text=" + encodeURIComponent(message), "_blank");
+  window.open(
+    "https://wa.me/?text=" + encodeURIComponent(message),
+    "_blank"
+  );
 });
 </script>
 
