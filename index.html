@@ -35,8 +35,12 @@
     }
 
     button, input, select { font: inherit; }
-    button, a { -webkit-tap-highlight-color: transparent; }
 
+    button, a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* Բնական ծաղիկներով ֆոն՝ էջերի անկյուններում */
     .flower-corner {
       position: fixed;
       z-index: 0;
@@ -55,30 +59,34 @@
     }
 
     .flower-tl {
-      top: -48px; left: -55px;
+      top: -48px;
+      left: -55px;
       border-radius: 0 0 80% 0;
       transform: rotate(-13deg);
     }
 
     .flower-tr {
-      top: -58px; right: -60px;
+      top: -58px;
+      right: -60px;
       border-radius: 0 0 0 80%;
       transform: rotate(16deg) scaleX(-1);
     }
 
     .flower-bl {
-      bottom: -70px; left: -65px;
+      bottom: -70px;
+      left: -65px;
       border-radius: 0 80% 0 0;
       transform: rotate(14deg) scaleY(-1);
     }
 
     .flower-br {
-      bottom: -70px; right: -60px;
+      bottom: -70px;
+      right: -60px;
       border-radius: 80% 0 0 0;
       transform: rotate(-12deg) scale(-1);
     }
 
-    /* Առաջին էջ */
+    /* Առաջին էջ. փոխված է միայն ֆոնի նկարը */
     .cover {
       position: relative;
       z-index: 1;
@@ -87,6 +95,10 @@
       align-items: center;
       justify-content: center;
       padding: 30px 18px;
+      background-image: url("./first-page.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
       transition: opacity .8s ease, transform .8s ease;
     }
 
@@ -99,8 +111,8 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 42px 26px;
-      background: rgba(250, 246, 239, .91);
+      padding: 54px 26px;
+      background: rgba(250, 246, 239, .78);
       border: 1px solid rgba(173, 138, 93, .85);
       outline: 1px solid rgba(173, 138, 93, .38);
       outline-offset: 7px;
@@ -117,26 +129,21 @@
       font-size: 23px;
     }
 
-    .cover-card::before { top: 18px; left: 20px; }
-    .cover-card::after { right: 20px; bottom: 18px; }
+    .cover-card::before {
+      top: 18px;
+      left: 20px;
+    }
+
+    .cover-card::after {
+      right: 20px;
+      bottom: 18px;
+    }
 
     .cover-ornament {
       color: var(--gold);
       font-size: 31px;
-      margin-bottom: 14px;
+      margin-bottom: 24px;
       animation: gentleFloat 4s ease-in-out infinite;
-    }
-
-    /* Նոր նկար առաջին էջում */
-    .cover-photo {
-      display: block;
-      width: min(100%, 300px);
-      max-height: 220px;
-      object-fit: cover;
-      object-position: center;
-      margin: 0 auto 22px;
-      border: 1px solid rgba(173, 138, 93, .45);
-      box-shadow: 0 8px 24px rgba(73, 56, 47, .10);
     }
 
     .cover-label {
@@ -144,7 +151,7 @@
       letter-spacing: 3px;
       line-height: 2;
       color: var(--brown);
-      margin: 0 0 18px;
+      margin: 0 0 25px;
     }
 
     .cover-names {
@@ -163,7 +170,7 @@
     }
 
     .cover-date {
-      margin: 22px 0 16px;
+      margin: 25px 0 19px;
       color: var(--brown);
       font-family: "Cormorant Garamond", serif;
       font-size: 23px;
@@ -172,7 +179,7 @@
 
     .cover-description {
       max-width: 310px;
-      margin: 0 0 25px;
+      margin: 0 0 32px;
       font-size: 14px;
       line-height: 2;
       color: var(--brown);
@@ -364,7 +371,7 @@
       color: white;
     }
 
-    /* RSVP-ի վինտաժային նկարի եզրագիծ */
+    /* RSVP-ի վինտաժային եզրագիծ */
     .rsvp-section {
       position: relative;
       isolation: isolate;
@@ -506,18 +513,13 @@
 
       .cover-card {
         min-height: 550px;
-        padding: 42px 20px;
+        padding: 44px 20px;
       }
 
       .cover-label { letter-spacing: 2px; }
 
       .cover-names {
         font-size: clamp(43px, 11vw, 59px);
-      }
-
-      .cover-photo {
-        width: min(100%, 270px);
-        max-height: 190px;
       }
 
       .section {
@@ -577,14 +579,6 @@
   <section class="cover" id="cover">
     <div class="cover-card">
       <div class="cover-ornament">❦</div>
-
-      <!-- Առաջին էջի նկարը. ֆայլը կոչել first-page.jpg -->
-      <img
-        class="cover-photo"
-        src="./first-page.jpg"
-        alt="Հարսանյաց նկար"
-      >
-
       <p class="cover-label">ՄԵՐ ՀԱՐՍԱՆՅԱՑ ՀՐԱՎԵՐԸ</p>
 
       <h1 class="cover-names">
@@ -605,11 +599,11 @@
     </div>
   </section>
 
-  <!-- Հրավերի հիմնական էջ -->
+  <!-- Երկրորդ էջ -->
   <main class="invitation" id="invitation">
     <section class="second-page-photo">
       <img
-        src="./cover-photo.jpg"
+        src="cover-photo.jpg"
         alt="Արամի և Արմինայի հարսանյաց լուսանկարը"
         fetchpriority="high"
       >
@@ -640,7 +634,7 @@
         playsinline
         preload="metadata"
       >
-        <source src="./couple.mp4" type="video/mp4">
+        <source src="couple.mp4" type="video/mp4">
         Ձեր դիտարկիչը չի աջակցում տեսանյութի նվագարկումը։
       </video>
     </section>
@@ -666,7 +660,7 @@
         <article class="event-card">
           <img
             class="event-image"
-            src="./church.jpg"
+            src="church.jpg"
             alt="Սուրբ Սարգիս եկեղեցի"
             loading="lazy"
           >
@@ -687,7 +681,7 @@
         <article class="event-card">
           <img
             class="event-image"
-            src="./restaurant.png"
+            src="restaurant.png"
             alt="Rubina Hall Restaurant"
             loading="lazy"
           >
@@ -707,7 +701,6 @@
       </div>
     </section>
 
-    <!-- RSVP՝ բեժ վինտաժային եզրագծով -->
     <section class="section rsvp-section" id="rsvp">
       <div class="rsvp-inner">
         <p class="section-label">ՍՊԱՍՈՒՄ ԵՆՔ ՁԵՐ ՊԱՏԱՍԽԱՆԻՆ</p>
@@ -759,7 +752,6 @@
     </footer>
   </main>
 
-  <!-- Երաժշտություն -->
   <audio id="backgroundMusic" loop preload="auto">
     <source
       src="https://www.dropbox.com/scl/fi/a2bxp2c1fqkpzz3m2pept/wedding.mp3.mp3?rlkey=pc00w4gf9pef9howaghtqpxpk&raw=1"
@@ -819,7 +811,7 @@
       try {
         await coupleVideo.play();
       } catch (error) {
-        // Տեսանյութը կարելի է միացնել ձեռքով։
+        // Տեսանյութը հնարավոր է սկսել ձեռքով։
       }
 
       await startMusic();
