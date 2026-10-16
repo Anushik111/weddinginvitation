@@ -180,17 +180,12 @@
       text-shadow: 0 1px 8px rgba(255,250,240,.9);
     }
 
-    .open-button {
-      border: 1px solid var(--brown);
-      background: transparent;
-      color: var(--brown);
-      text-shadow: 0 1px 8px rgba(255,250,240,.8);
-      padding: 14px 25px;
-      min-height: 49px;
-      cursor: pointer;
-      letter-spacing: .5px;
-      transition: background .3s ease, color .3s ease, transform .3s ease;
-    }
+   .open-button {
+  display: inline-flex;
+  position: relative;
+  margin-top: 18px;
+  flex-shrink: 0;
+}
 
     .open-button:hover {
       background: var(--brown);
