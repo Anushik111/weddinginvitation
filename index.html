@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="hy">
 <head>
@@ -19,7 +18,6 @@
       --brown: #6f5545;
       --dark: #49382f;
       --gold: #ad8a5d;
-      --white: #fffdf9;
     }
 
     * {
@@ -38,15 +36,12 @@
       overflow-x: hidden;
     }
 
-    button,
-    input,
-    select,
-    textarea {
+    button, input, select {
       font: inherit;
     }
 
-    button {
-      cursor: pointer;
+    button, a {
+      -webkit-tap-highlight-color: transparent;
     }
 
     .cover {
@@ -62,8 +57,8 @@
     }
 
     .cover-card {
-      width: min(100%, 650px);
-      min-height: 80svh;
+      width: min(100%, 680px);
+      min-height: 82svh;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -78,7 +73,7 @@
 
     .ornament {
       color: var(--gold);
-      font-size: 30px;
+      font-size: 32px;
       margin-bottom: 25px;
     }
 
@@ -86,17 +81,15 @@
       font-size: 12px;
       letter-spacing: 4px;
       line-height: 2;
-      color: var(--brown);
       margin-bottom: 30px;
     }
 
     .cover-names {
       font-family: "Cormorant Garamond", serif;
-      font-size: clamp(42px, 9vw, 76px);
+      font-size: clamp(44px, 9vw, 78px);
       font-weight: 500;
       line-height: 1.2;
       margin: 0;
-      color: var(--dark);
       overflow-wrap: anywhere;
     }
 
@@ -116,9 +109,9 @@
     }
 
     .cover-description {
-      max-width: 370px;
+      max-width: 390px;
       font-size: 14px;
-      line-height: 2;
+      line-height: 2.2;
       margin: 0 0 28px;
     }
 
@@ -128,13 +121,12 @@
       justify-content: center;
       align-items: center;
       min-height: 48px;
-      padding: 13px 28px;
+      padding: 13px 26px;
       border: 1px solid var(--gold);
       background: transparent;
       color: var(--dark);
       text-decoration: none;
       font-size: 13px;
-      letter-spacing: .5px;
       transition: .3s ease;
     }
 
@@ -175,7 +167,7 @@
     }
 
     .intro-text {
-      max-width: 650px;
+      max-width: 680px;
       margin: 0 auto;
       font-size: 15px;
       line-height: 2.2;
@@ -183,8 +175,8 @@
 
     .names-display {
       font-family: "Cormorant Garamond", serif;
-      font-size: clamp(38px, 8vw, 65px);
-      line-height: 1.25;
+      font-size: clamp(40px, 8vw, 68px);
+      line-height: 1.3;
       font-weight: 500;
       margin: 20px 0;
     }
@@ -200,32 +192,43 @@
       margin: 28px auto;
     }
 
+    /* ՄԵԾ ՎԻԴԵՈ՝ ԱՌԱՆՑ ԿԱՌԱՎԱՐՄԱՆ ԿՈՃԱԿՆԵՐԻ */
+
     .video-section {
-      width: min(100% - 24px, 1100px);
+      width: min(100% - 20px, 1400px);
       margin: 0 auto;
-      padding: 35px 0 65px;
+      padding: 20px 0 65px;
+    }
+
+    .video-frame {
+      width: 100%;
+      overflow: hidden;
+      background: #e5d5c1;
+      line-height: 0;
     }
 
     .couple-video {
       display: block;
       width: 100%;
-      aspect-ratio: 16 / 10;
+      height: auto;
+      aspect-ratio: 16 / 9;
       object-fit: cover;
-      border: 1px solid rgba(173,138,93,.45);
       background: #e5d5c1;
-      border-radius: 2px;
+      pointer-events: none;
+      border: none;
+      outline: none;
     }
 
     .date-card {
       background: var(--light);
-      padding: 40px 20px;
+      padding: 45px 20px;
       border-top: 1px solid rgba(173,138,93,.3);
       border-bottom: 1px solid rgba(173,138,93,.3);
     }
 
     .date-number {
       font-family: "Cormorant Garamond", serif;
-      font-size: clamp(70px, 15vw, 110px);
+      font-size: clamp(75px, 15vw, 115px);
       line-height: 1;
       color: var(--gold);
       margin: 15px 0;
@@ -238,52 +241,78 @@
 
     .date-year {
       font-family: "Cormorant Garamond", serif;
-      font-size: 24px;
+      font-size: 25px;
       letter-spacing: 5px;
       margin-top: 10px;
     }
 
+    /* ԵԿԵՂԵՑՈՒ ԵՎ ՌԵՍՏՈՐԱՆԻ ՆԿԱՐՆԵՐ */
+
     .events {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-      margin-top: 35px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 28px;
+      margin-top: 38px;
+      text-align: center;
     }
 
     .event-card {
-      padding: 28px 17px;
       background: var(--light);
       border: 1px solid rgba(173,138,93,.3);
+      padding: 15px 15px 28px;
+      min-width: 0;
+    }
+
+    .event-image-wrap {
+      width: 100%;
+      height: 300px;
+      overflow: hidden;
+      background: var(--beige);
+      margin-bottom: 24px;
+    }
+
+    .event-image {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .7s ease;
+    }
+
+    .event-card:hover .event-image {
+      transform: scale(1.04);
     }
 
     .event-time {
       font-family: "Cormorant Garamond", serif;
-      font-size: 30px;
+      font-size: 31px;
       color: var(--gold);
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
 
     .event-name {
-      font-size: 17px;
+      font-size: 18px;
       font-weight: 600;
-      margin-bottom: 12px;
+      line-height: 1.8;
+      margin-bottom: 10px;
     }
 
     .event-place {
       font-size: 13px;
-      line-height: 1.9;
-      margin-bottom: 20px;
+      line-height: 2;
+      margin: 0 auto 20px;
+      max-width: 340px;
     }
 
     .outline-button {
       min-height: 42px;
-      padding: 10px 14px;
+      padding: 10px 17px;
       font-size: 12px;
     }
 
     .rsvp {
       background: var(--light);
-      padding: 55px 20px;
+      padding: 45px 24px;
       border: 1px solid rgba(173,138,93,.3);
       max-width: 650px;
       margin: 0 auto;
@@ -323,6 +352,7 @@
       border: 1px solid var(--gold);
       color: white;
       padding: 14px 20px;
+      cursor: pointer;
       transition: .3s ease;
     }
 
@@ -335,6 +365,14 @@
       font-size: 12px;
       line-height: 1.8;
       margin-top: 15px;
+    }
+
+    .message {
+      display: none;
+      text-align: center;
+      line-height: 1.8;
+      padding: 15px;
+      color: var(--brown);
     }
 
     footer {
@@ -350,7 +388,7 @@
 
     .footer-names {
       font-family: "Cormorant Garamond", serif;
-      font-size: 25px;
+      font-size: 26px;
       color: var(--gold);
     }
 
@@ -359,8 +397,8 @@
       z-index: 1000;
       right: 18px;
       bottom: 18px;
-      width: 50px;
-      height: 50px;
+      width: 48px;
+      height: 48px;
       display: none;
       align-items: center;
       justify-content: center;
@@ -368,7 +406,7 @@
       border-radius: 50%;
       background: var(--light);
       color: var(--dark);
-      font-size: 23px;
+      font-size: 22px;
       box-shadow: 0 4px 18px rgba(73,56,47,.12);
     }
 
@@ -377,15 +415,7 @@
     }
 
     .music-button.playing {
-      animation: rotateMusic 4s linear infinite;
-    }
-
-    .message {
-      display: none;
-      text-align: center;
-      line-height: 1.8;
-      padding: 15px;
-      color: var(--brown);
+      animation: rotateMusic 5s linear infinite;
     }
 
     @keyframes fadeIn {
@@ -400,9 +430,7 @@
     }
 
     @keyframes rotateMusic {
-      to {
-        transform: rotate(360deg);
-      }
+      to { transform: rotate(360deg); }
     }
 
     @media (max-width: 700px) {
@@ -420,22 +448,26 @@
       }
 
       .video-section {
-        width: calc(100% - 24px);
-        padding: 15px 0 45px;
+        width: 100%;
+        padding: 10px 0 45px;
       }
 
       .couple-video {
-        aspect-ratio: 4 / 5;
+        aspect-ratio: 4 / 3;
         object-fit: cover;
       }
 
       .events {
         grid-template-columns: 1fr;
-        gap: 14px;
+        gap: 22px;
       }
 
       .event-card {
-        padding: 25px 18px;
+        padding: 12px 12px 25px;
+      }
+
+      .event-image-wrap {
+        height: 280px;
       }
 
       .rsvp {
@@ -455,11 +487,10 @@
 </head>
 
 <body>
-  <!-- Առաջին էջ՝ առանց վիդեոյի -->
+  <!-- ԱՌԱՋԻՆ ԷՋ -->
   <section class="cover" id="cover">
     <div class="cover-card">
       <div class="ornament">❦</div>
-
       <div class="cover-label">ՀԱՐՍԱՆՅԱՑ ՀՐԱՎԵՐ</div>
 
       <h1 class="cover-names">
@@ -476,18 +507,17 @@
       </p>
 
       <button class="primary-button" id="openButton" type="button">
-        Բացել հրավերը
+        Բացել հրավերը ♡
       </button>
 
-      <div class="ornament" style="margin: 30px 0 0;">❦</div>
+      <div class="ornament" style="margin:30px 0 0;">❦</div>
     </div>
   </section>
 
-  <!-- Երկրորդ էջ -->
+  <!-- ՀՐԱՎԵՐԻ ՀԻՄՆԱԿԱՆ ՄԱՍ -->
   <main class="invitation" id="invitation">
     <section class="section">
-      <div class="eyebrow">ՄԵՐ ՀԱՏՈՒԿ ՕՐԸ</div>
-
+      <div class="eyebrow">ՍԻՐՈՎ ՀՐԱՎԻՐՈՒՄ ԵՆՔ</div>
       <h2 class="section-title">Սիրելի՛ հարազատներ և ընկերներ</h2>
 
       <p class="intro-text">
@@ -498,32 +528,35 @@
 
       <div class="divider"></div>
 
-      <div class="names-display">
-        Արամ <span>&</span> Արմինա
-      </div>
+      <div class="names-display">Արամ <span>&</span> Արմինա</div>
 
       <p class="intro-text">
         Սիրով սպասում ենք Ձեզ մեր հարսանյաց հանդիսությանը։
       </p>
     </section>
 
-    <!-- Մեծ վիդեո՝ ձայնն անջատված -->
+    <!-- ՄԵԾ ՎԻԴԵՈ՝ ԱՎՏՈՄԱՏ, ԱՆՁԱՅՆ ԵՎ ԱՌԱՆՑ ԿԱՌԱՎԱՐՄԱՆ -->
     <section class="video-section">
-      <video
-        class="couple-video"
-        id="coupleVideo"
-        autoplay
-        muted
-        loop
-        playsinline
-        controls
-        preload="metadata"
-      >
-        <source src="couple.mp4" type="video/mp4">
-        Ձեր դիտարկիչը չի աջակցում վիդեոյի ցուցադրումը։
-      </video>
+      <div class="video-frame">
+        <video
+          class="couple-video"
+          id="coupleVideo"
+          autoplay
+          muted
+          loop
+          playsinline
+          disablepictureinpicture
+          controlslist="nodownload nofullscreen noremoteplayback"
+          preload="auto"
+          tabindex="-1"
+          aria-label="Հարսանեկան տեսանյութ"
+        >
+          <source src="couple.mp4" type="video/mp4">
+        </video>
+      </div>
     </section>
 
+    <!-- ԱՄՍԱԹԻՎ -->
     <section class="section date-card">
       <div class="eyebrow">ՊԱՀՊԱՆԵՔ ԱՅՍ ՕՐԸ</div>
       <div class="date-number">28</div>
@@ -531,36 +564,31 @@
       <div class="date-year">2026</div>
     </section>
 
+    <!-- ԵԿԵՂԵՑԻ ԵՎ ՌԵՍՏՈՐԱՆ՝ ՆԿԱՐՆԵՐՈՎ -->
     <section class="section">
       <div class="eyebrow">ՀԱՆԴԻՊՄԱՆ ՎԱՅՐԵՐԸ</div>
       <h2 class="section-title">Օրվա ծրագիրը</h2>
 
       <div class="events">
         <article class="event-card">
-          <div class="event-time">10:00</div>
-          <div class="event-name">Հարսի տուն</div>
-          <div class="event-place">
-            Հանդիպում և օրվա գեղեցիկ սկիզբ
+          <div class="event-image-wrap">
+            <img
+              class="event-image"
+              src="church.jpg"
+              alt="Սուրբ Սարգիս եկեղեցի"
+              loading="lazy"
+            >
           </div>
-          <a
-            class="outline-button"
-            href="https://yandex.com/maps/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Ինչպե՞ս հասնել
-          </a>
-        </article>
 
-        <article class="event-card">
           <div class="event-time">13:00</div>
           <div class="event-name">Սուրբ Սարգիս եկեղեցի</div>
-          <div class="event-place">
+          <p class="event-place">
             Պսակադրության արարողություն
-          </div>
+          </p>
+
           <a
             class="outline-button"
-            href="https://yandex.com/maps/?text=Սուրբ%20Սարգիս%20եկեղեցի%20Հայաստան"
+            href="https://yandex.com/maps/-/CXBpJC-U"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -569,14 +597,24 @@
         </article>
 
         <article class="event-card">
+          <div class="event-image-wrap">
+            <img
+              class="event-image"
+              src="restaurant.png"
+              alt="Rubina Hall Restaurant"
+              loading="lazy"
+            >
+          </div>
+
           <div class="event-time">17:00</div>
           <div class="event-name">Rubina Hall Restaurant</div>
-          <div class="event-place">
+          <p class="event-place">
             Հարսանյաց հանդիսություն
-          </div>
+          </p>
+
           <a
             class="outline-button"
-            href="https://yandex.com/maps/?text=Rubina%20Hall%20Restaurant"
+            href="https://yandex.com/maps/-/CXBpFGIS"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -586,6 +624,7 @@
       </div>
     </section>
 
+    <!-- ՄԱՍՆԱԿՑՈՒԹՅԱՆ ՀԱՍՏԱՏՈՒՄ -->
     <section class="section">
       <form class="rsvp" id="rsvpForm">
         <div class="eyebrow">ՁԵՐ ՊԱՏԱՍԽԱՆԸ</div>
@@ -630,12 +669,10 @@
         </button>
 
         <p class="form-note">
-          Պատասխանը կպատրաստվի WhatsApp-ով ուղարկելու համար։
+          Ձեր պատասխանը կպատրաստվի WhatsApp-ով ուղարկելու համար։
         </p>
 
-        <p class="message" id="formMessage">
-          Ձեր պատասխանը պատրաստ է։
-        </p>
+        <p class="message" id="formMessage"></p>
       </form>
     </section>
 
@@ -647,8 +684,8 @@
     </footer>
   </main>
 
-  <!-- Միայն ֆոնային երաժշտություն, վիդեոյի ձայնը միշտ անջատված է -->
-  <audio id="backgroundMusic" loop preload="none">
+  <!-- ՖՈՆԱՅԻՆ ԵՐԱԺՇՏՈՒԹՅՈՒՆ -->
+  <audio id="backgroundMusic" loop preload="auto">
     <source src="wedding.mp3" type="audio/mpeg">
   </audio>
 
@@ -656,8 +693,8 @@
     class="music-button"
     id="musicButton"
     type="button"
-    aria-label="Միացնել կամ անջատել ֆոնային երաժշտությունը"
-    title="Միացնել կամ անջատել երաժշտությունը"
+    aria-label="Ֆոնային երաժշտություն"
+    title="Ֆոնային երաժշտություն"
   >♫</button>
 
   <script>
@@ -668,59 +705,64 @@
     const backgroundMusic = document.getElementById("backgroundMusic");
     const musicButton = document.getElementById("musicButton");
 
-    let musicStarted = false;
+    // Վիդեոն միշտ անձայն է և չունի օգտատիրոջ կառավարման կոճակներ։
+    coupleVideo.muted = true;
+    coupleVideo.controls = false;
+    coupleVideo.disablePictureInPicture = true;
+    coupleVideo.setAttribute("playsinline", "");
+    coupleVideo.setAttribute("muted", "");
+
+    async function startVideo() {
+      coupleVideo.muted = true;
+      try {
+        await coupleVideo.play();
+      } catch (error) {
+        // Որոշ սարքեր կարող են արգելել ավտոմատ նվագարկումը։
+      }
+    }
+
+    async function startMusic() {
+      try {
+        await backgroundMusic.play();
+        musicButton.classList.add("playing");
+      } catch (error) {
+        // Եթե սարքը արգելափակի ձայնը, ավտոմատ նվագարկումը չի երաշխավորվում։
+      }
+    }
 
     openButton.addEventListener("click", async () => {
       cover.style.display = "none";
       invitation.classList.add("show");
       musicButton.classList.add("show");
 
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-      });
+      window.scrollTo({ top: 0, behavior: "smooth" });
 
-      // Վիդեոյի ձայնը միշտ անջատված է
-      coupleVideo.muted = true;
+      // Սեղմումը օգտատիրոջ գործողություն է, ուստի երաժշտությունը
+      // փորձում ենք սկսել հենց հրավերը բացելիս։
+      await Promise.all([
+        startVideo(),
+        startMusic()
+      ]);
+    });
 
-      try {
-        await coupleVideo.play();
-      } catch (error) {
-        // Եթե ավտոմատ չմիանա, վիդեոն կարելի է միացնել controls-ից։
-      }
-
-      // Երաժշտությունը փորձում է միանալ օգտատիրոջ սեղմումից հետո
-      try {
-        await backgroundMusic.play();
-        musicStarted = true;
-        musicButton.classList.add("playing");
-        musicButton.textContent = "♫";
-      } catch (error) {
-        // Եթե երաժշտությունը չմիանա, սեղմեք երաժշտության կոճակը։
+    // Եթե դիտարկիչը դադարեցնի վիդեոն, փորձել շարունակել։
+    coupleVideo.addEventListener("pause", () => {
+      if (invitation.classList.contains("show")) {
+        startVideo();
       }
     });
 
-    musicButton.addEventListener("click", async () => {
-      if (!musicStarted || backgroundMusic.paused) {
-        try {
-          await backgroundMusic.play();
-          musicStarted = true;
-          musicButton.classList.add("playing");
-          musicButton.textContent = "♫";
-        } catch (error) {
-          musicButton.classList.remove("playing");
-        }
-      } else {
-        backgroundMusic.pause();
-        musicButton.classList.remove("playing");
-        musicButton.textContent = "♫";
-      }
-    });
-
-    // Վիդեոյի ձայնը անջատված պահել նաև playback-ի ընթացքում
     coupleVideo.addEventListener("volumechange", () => {
       if (!coupleVideo.muted) {
         coupleVideo.muted = true;
+      }
+    });
+
+    // Երաժշտության կոճակը միայն տեսողական նշան է․
+    // այցելուն չի կարող դրանով երաժշտությունը անջատել։
+    musicButton.addEventListener("click", () => {
+      if (backgroundMusic.paused) {
+        startMusic();
       }
     });
 
@@ -737,17 +779,16 @@
         "Մասնակցություն՝ " + attendance + "\n" +
         "Հյուրերի քանակ՝ " + guestCount;
 
-      document.getElementById("formMessage").style.display = "block";
-      document.getElementById("formMessage").textContent =
-        "Բացվում է WhatsApp-ը՝ Ձեր պատասխանը ուղարկելու համար։";
-
-      // Փոխարինեք համարն իրական WhatsApp համարով՝ երկրի կոդով,
-      // առանց + նշանի, բացատների կամ գծիկների։
       const whatsappNumber = "374XXXXXXXX";
 
       const whatsappUrl =
         "https://wa.me/" + whatsappNumber +
         "?text=" + encodeURIComponent(message);
+
+      const formMessage = document.getElementById("formMessage");
+      formMessage.style.display = "block";
+      formMessage.textContent =
+        "Բացվում է WhatsApp-ը՝ Ձեր պատասխանը ուղարկելու համար։";
 
       window.open(whatsappUrl, "_blank", "noopener,noreferrer");
     });
