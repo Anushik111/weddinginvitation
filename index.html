@@ -60,7 +60,7 @@ button, input, select {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 45px 22px;
+  padding: 35px 22px;
   border: 1px solid rgba(173,138,93,.5);
   outline: 1px solid rgba(173,138,93,.25);
   outline-offset: 7px;
@@ -68,17 +68,35 @@ button, input, select {
   animation: fadeIn 1.4s ease both;
 }
 
+/* ՆԿԱՐԸ 1-ԻՆ ԷՋՈՒՄ */
+.cover-photo-wrap {
+  width: min(100%, 360px);
+  height: 260px;
+  margin: 0 auto 27px;
+  overflow: hidden;
+  background: var(--beige);
+  animation: fadeIn 1.5s ease both;
+}
+
+.cover-photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
 .ornament {
   color: var(--gold);
-  font-size: 32px;
-  margin-bottom: 25px;
+  font-size: 30px;
+  margin-bottom: 18px;
 }
 
 .cover-label {
   font-size: 12px;
   letter-spacing: 4px;
   line-height: 2;
-  margin-bottom: 30px;
+  margin-bottom: 23px;
 }
 
 .cover-names {
@@ -94,14 +112,14 @@ button, input, select {
   display: block;
   color: var(--gold);
   font-size: .65em;
-  margin: 8px 0;
+  margin: 5px 0;
 }
 
 .cover-date {
   font-family: "Cormorant Garamond", serif;
   font-size: 25px;
   letter-spacing: 5px;
-  margin: 30px 0;
+  margin: 25px 0;
   color: var(--brown);
 }
 
@@ -109,7 +127,7 @@ button, input, select {
   max-width: 390px;
   font-size: 14px;
   line-height: 2.2;
-  margin: 0 0 28px;
+  margin: 0 0 25px;
 }
 
 .primary-button,
@@ -191,7 +209,6 @@ button, input, select {
 }
 
 /* ՈՒՂՂԱՀԱՅԱՑ ՎԻԴԵՈ՝ 9:16 */
-
 .video-section {
   width: 100%;
   margin: 0 auto;
@@ -210,8 +227,8 @@ button, input, select {
   display: block;
   width: 100%;
   max-width: 600px;
-  height: auto;
   aspect-ratio: 9 / 16;
+  height: auto;
   object-fit: cover;
   background: var(--beige);
   border: none;
@@ -246,8 +263,6 @@ button, input, select {
   letter-spacing: 5px;
   margin-top: 10px;
 }
-
-/* ԵԿԵՂԵՑՈՒ ԵՎ ՌԵՍՏՈՐԱՆԻ ՆԿԱՐՆԵՐ */
 
 .events {
   display: grid;
@@ -437,7 +452,13 @@ footer {
 @media (max-width: 700px) {
   .cover-card {
     min-height: 78svh;
-    padding: 35px 17px;
+    padding: 25px 17px;
+  }
+
+  .cover-photo-wrap {
+    height: 230px;
+    width: min(100%, 330px);
+    margin-bottom: 22px;
   }
 
   .cover-label {
@@ -493,6 +514,17 @@ footer {
 
 <section class="cover" id="cover">
   <div class="cover-card">
+
+    <!-- GitHub-ում նկարի անունը դարձրու cover-photo.jpg -->
+    <div class="cover-photo-wrap">
+      <img
+        class="cover-photo"
+        src="cover-photo.jpg"
+        alt="Հարսանյաց հրավիրատոմսի գլխավոր նկար"
+        fetchpriority="high"
+      >
+    </div>
+
     <div class="ornament">❦</div>
     <div class="cover-label">ՀԱՐՍԱՆՅԱՑ ՀՐԱՎԵՐ</div>
 
@@ -513,7 +545,7 @@ footer {
       Բացել հրավերը ♡
     </button>
 
-    <div class="ornament" style="margin:30px 0 0;">❦</div>
+    <div class="ornament" style="margin:25px 0 0;">❦</div>
   </div>
 </section>
 
@@ -538,7 +570,6 @@ footer {
     </p>
   </section>
 
-  <!-- ՈՒՂՂԱՀԱՅԱՑ ՎԻԴԵՈ -->
   <section class="video-section">
     <div class="video-frame">
       <video
@@ -566,13 +597,11 @@ footer {
     <div class="date-year">2026</div>
   </section>
 
-  <!-- ԵԿԵՂԵՑԻ ԵՎ ՌԵՍՏՈՐԱՆ -->
   <section class="section">
     <div class="eyebrow">ՀԱՆԴԻՊՄԱՆ ՎԱՅՐԵՐԸ</div>
     <h2 class="section-title">Օրվա ծրագիրը</h2>
 
     <div class="events">
-
       <article class="event-card">
         <div class="event-image-wrap">
           <img
@@ -616,7 +645,6 @@ footer {
           rel="noopener noreferrer"
         >Ինչպե՞ս հասնել</a>
       </article>
-
     </div>
   </section>
 
@@ -688,7 +716,7 @@ footer {
   class="music-button"
   id="musicButton"
   type="button"
-  aria-label="Ֆոնային երաժշտություն"
+  aria-label="Միացնել ֆոնային երաժշտությունը"
   title="Ֆոնային երաժշտություն"
 >♫</button>
 
@@ -710,7 +738,7 @@ async function startVideo() {
   try {
     await coupleVideo.play();
   } catch (error) {
-    // Որոշ սարքեր կարող են արգելել ավտոմատ նվագարկումը։
+    // Ավտոմատ նվագարկումը կարող է կախված լինել սարքի կարգավորումներից։
   }
 }
 
@@ -718,8 +746,9 @@ async function startMusic() {
   try {
     await backgroundMusic.play();
     musicButton.classList.add("playing");
+    musicButton.setAttribute("aria-label", "Անջատել ֆոնային երաժշտությունը");
   } catch (error) {
-    // Եթե ավտոմատ ձայնը արգելափակվի, այն կարող է չմեկնարկել։
+    musicButton.classList.remove("playing");
   }
 }
 
@@ -728,10 +757,7 @@ openButton.addEventListener("click", async () => {
   invitation.classList.add("show");
   musicButton.classList.add("show");
 
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
-  });
+  window.scrollTo({ top: 0, behavior: "smooth" });
 
   await Promise.all([
     startVideo(),
@@ -745,10 +771,13 @@ coupleVideo.addEventListener("volumechange", () => {
   }
 });
 
-// Երաժշտության կոճակը չի անջատում երաժշտությունը։
-musicButton.addEventListener("click", () => {
+musicButton.addEventListener("click", async () => {
   if (backgroundMusic.paused) {
-    startMusic();
+    await startMusic();
+  } else {
+    backgroundMusic.pause();
+    musicButton.classList.remove("playing");
+    musicButton.setAttribute("aria-label", "Միացնել ֆոնային երաժշտությունը");
   }
 });
 
@@ -765,17 +794,15 @@ document.getElementById("rsvpForm").addEventListener("submit", (event) => {
     "Մասնակցություն՝ " + attendance + "\n" +
     "Հյուրերի քանակ՝ " + guestCount;
 
-  // Փոխարինեք իրական WhatsApp համարով՝ երկրի կոդով,
-  // առանց + նշանի, բացատների կամ գծիկների։
+  // Փոխարինեք X-երը իրական WhatsApp համարով՝ առանց + նշանի։
   const whatsappNumber = "374XXXXXXXX";
 
   const whatsappUrl =
     "https://wa.me/" + whatsappNumber +
     "?text=" + encodeURIComponent(message);
 
-  const formMessage = document.getElementById("formMessage");
-  formMessage.style.display = "block";
-  formMessage.textContent =
+  document.getElementById("formMessage").style.display = "block";
+  document.getElementById("formMessage").textContent =
     "Բացվում է WhatsApp-ը՝ Ձեր պատասխանը ուղարկելու համար։";
 
   window.open(whatsappUrl, "_blank", "noopener,noreferrer");
