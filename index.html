@@ -1,198 +1,721 @@
+```html
 <!DOCTYPE html>
 <html lang="hy">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Արամ և Արմինա — Հարսանեկան հրավիրատոմս</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Armenian:wght@300;400;500;600&display=swap" rel="stylesheet">
+
 <style>
-:root{--gold:#a99a68;--green:#77704b;--ink:#45463f;--cream:#fbfaf7}
-*{box-sizing:border-box}
-body{margin:0;background:white;color:var(--ink);font-family:"Noto Serif Armenian",serif}
-button,input,select,textarea{font:inherit}
-.cover{min-height:100vh;display:grid;place-items:center;padding:28px 18px;background:white}
-.frame{width:min(100%,650px);padding:36px clamp(18px,5vw,48px);text-align:center;border:1px solid var(--gold);outline:1px solid #d7ceb4;outline-offset:5px}
-.ornament{color:var(--gold);font-size:25px;letter-spacing:5px;margin:4px 0 22px}
-.eyebrow{font-size:12px;letter-spacing:3px;color:var(--green)}
-.names{font-size:clamp(34px,7vw,54px);font-weight:400;color:var(--green);margin:24px 0 10px}
-.amp{color:var(--gold);font-style:italic}
-.date{letter-spacing:4px;color:#817a68;margin:18px 0 25px}
-video{display:block;width:100%;background:#f0eee8;object-fit:cover}
-.cover-video{aspect-ratio:16/9;max-height:340px;margin:25px auto}
-button,.map-link{display:inline-block;padding:12px 22px;border:1px solid var(--gold);background:white;color:var(--green);text-decoration:none;cursor:pointer}
-button:hover,.map-link:hover{background:var(--cream)}
-.invitation{display:none}
-.invitation.show{display:block;animation:fade .6s ease}
-@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-.hero{text-align:center;padding:65px 20px;border-bottom:1px solid #eee9dc}
-h2{font-weight:400;color:var(--green);font-size:clamp(25px,5vw,36px)}
-.hero p,.subtitle{line-height:2;color:#817a68;font-size:14px}
-.section{width:min(100% - 32px,960px);margin:auto;padding:55px 0}
-.subtitle{text-align:center;margin-bottom:30px}
-.events{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
-.event{text-align:center;border:1px solid #e5dece;padding:22px 14px;background:#fff}
-.number{color:var(--gold);font-size:27px}
-.event h3{font-weight:400;color:var(--green);font-size:17px;line-height:1.7}
-.place-photo{width:100%;height:210px;object-fit:cover;background:#f0eee8;margin:12px 0}
-.time{margin:14px 0 18px}
-.map-link{font-size:13px;padding:10px 14px}
-.video-section{text-align:center;padding:45px 20px}
-.video-box{width:min(100%,720px);margin:25px auto;border:1px solid #e5dece;padding:10px}
-.couple-video{aspect-ratio:16/9;max-height:450px}
-.quote{text-align:center;padding:44px 22px;border-block:1px solid #eee9dc;color:var(--green);line-height:2.2}
-.rsvp{background:var(--cream);padding:55px 20px}
-.form{width:min(100%,560px);margin:auto}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.field{display:flex;flex-direction:column;gap:7px;margin-bottom:14px;font-size:13px}
-.full{grid-column:1/-1}
-input,select,textarea{width:100%;padding:12px;border:1px solid #ddd5c4;background:white;color:var(--ink)}
-textarea{min-height:90px;resize:vertical}
-.submit{width:100%;margin-top:10px}
-.note{text-align:center;font-size:12px;color:#817a68;line-height:1.8}
-.music{display:none;position:fixed;right:18px;bottom:18px;border-radius:50%;width:48px;height:48px;padding:0;background:white;font-size:22px}
-.music.show{display:block}
-footer{text-align:center;padding:30px 15px;color:var(--green);line-height:2;border-top:1px solid #eee9dc}
-@media(max-width:700px){.events{grid-template-columns:1fr}.place-photo{height:240px}.grid{grid-template-columns:1fr}.full{grid-column:auto}.frame{padding:28px 17px}.section{padding:42px 0}}
+:root {
+  --gold: #a99a68;
+  --green: #77704b;
+  --ink: #45463f;
+  --cream: #f3ebdf;
+  --light: #faf6ef;
+  --border: #e3d6c2;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: "Noto Serif Armenian", serif;
+}
+
+button, input, select, textarea {
+  font: inherit;
+}
+
+/* Առաջին էջ */
+.cover {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 35px 22px;
+  background: var(--cream);
+}
+
+.frame {
+  width: min(100%, 650px);
+  padding: 38px clamp(18px, 5vw, 48px);
+  text-align: center;
+  border: 1px solid var(--gold);
+  outline: 1px solid #d7ceb4;
+  outline-offset: 5px;
+  background: var(--light);
+  box-shadow: 0 12px 40px rgba(95, 77, 48, .06);
+}
+
+.ornament {
+  color: var(--gold);
+  font-size: 25px;
+  letter-spacing: 5px;
+  margin: 4px 0 22px;
+}
+
+.eyebrow {
+  font-size: 12px;
+  letter-spacing: 3px;
+  line-height: 2;
+  color: var(--green);
+}
+
+.names {
+  font-size: clamp(30px, 7vw, 54px);
+  font-weight: 400;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+  color: var(--green);
+  margin: 24px 0 10px;
+}
+
+.amp {
+  color: var(--gold);
+  font-style: italic;
+}
+
+.date {
+  letter-spacing: 3px;
+  line-height: 2;
+  color: #817a68;
+  margin: 18px 0 25px;
+}
+
+video {
+  display: block;
+  width: 100%;
+  background: #e8dece;
+  object-fit: cover;
+  border-radius: 2px;
+}
+
+.cover-video {
+  aspect-ratio: 16 / 9;
+  max-height: 340px;
+  margin: 25px auto;
+}
+
+button,
+.map-link {
+  display: inline-block;
+  padding: 12px 22px;
+  border: 1px solid var(--gold);
+  background: var(--light);
+  color: var(--green);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background .25s, color .25s;
+}
+
+button:hover,
+.map-link:hover {
+  background: #e9decc;
+}
+
+/* Հիմնական հրավիրատոմս */
+.invitation {
+  display: none;
+  background: var(--cream);
+}
+
+.invitation.show {
+  display: block;
+  animation: fade .7s ease;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero {
+  text-align: center;
+  padding: 65px 20px;
+  border-bottom: 1px solid var(--border);
+  background: var(--cream);
+}
+
+h2 {
+  font-weight: 400;
+  color: var(--green);
+  font-size: clamp(24px, 5vw, 36px);
+  line-height: 1.7;
+  margin: 12px 0;
+}
+
+.hero p,
+.subtitle {
+  line-height: 2.1;
+  color: #817a68;
+  font-size: 14px;
+}
+
+.section {
+  width: min(calc(100% - 32px), 960px);
+  margin: auto;
+  padding: 55px 0;
+}
+
+.subtitle {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* Օրվա ծրագիր */
+.events {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.event {
+  text-align: center;
+  border: 1px solid var(--border);
+  padding: 22px 14px;
+  background: var(--light);
+  min-width: 0;
+}
+
+.number {
+  color: var(--gold);
+  font-size: 27px;
+}
+
+.event h3 {
+  font-weight: 400;
+  color: var(--green);
+  font-size: 17px;
+  line-height: 1.8;
+  overflow-wrap: anywhere;
+}
+
+.place-photo {
+  display: block;
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+  background: #e8dece;
+  margin: 12px 0;
+}
+
+.time {
+  margin: 14px 0 18px;
+  color: var(--ink);
+}
+
+.map-link {
+  font-size: 13px;
+  padding: 10px 14px;
+}
+
+/* Տեսանյութ */
+.video-section {
+  text-align: center;
+  padding: 45px 20px;
+  background: var(--cream);
+}
+
+.video-box {
+  width: min(100%, 720px);
+  margin: 25px auto;
+  border: 1px solid var(--border);
+  padding: 10px;
+  background: var(--light);
+}
+
+.couple-video {
+  aspect-ratio: 16 / 9;
+  max-height: 450px;
+}
+
+/* Մեջբերում */
+.quote {
+  text-align: center;
+  padding: 44px 22px;
+  border-block: 1px solid var(--border);
+  background: var(--light);
+  color: var(--green);
+  line-height: 2.2;
+}
+
+/* Մասնակցության հաստատում */
+.rsvp {
+  background: #eae0d1;
+  padding: 55px 20px;
+}
+
+.form {
+  width: min(100%, 560px);
+  margin: auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin-bottom: 14px;
+  font-size: 13px;
+  color: var(--ink);
+}
+
+.full {
+  grid-column: 1 / -1;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid #d8cbb8;
+  border-radius: 0;
+  background: var(--light);
+  color: var(--ink);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 1px solid var(--gold);
+  border-color: var(--gold);
+}
+
+textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+
+.submit {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.note {
+  text-align: center;
+  font-size: 12px;
+  color: #817a68;
+  line-height: 1.8;
+}
+
+/* Երաժշտության կոճակ */
+.music {
+  display: none;
+  position: fixed;
+  z-index: 10;
+  right: 18px;
+  bottom: 18px;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  padding: 0;
+  background: var(--light);
+  font-size: 22px;
+  box-shadow: 0 4px 15px rgba(70, 55, 35, .12);
+}
+
+.music.show {
+  display: block;
+}
+
+.music.playing {
+  background: #e5d6bd;
+}
+
+/* Ստորին հատված */
+footer {
+  text-align: center;
+  padding: 30px 15px;
+  color: var(--green);
+  line-height: 2.2;
+  border-top: 1px solid var(--border);
+  background: var(--cream);
+}
+
+/* Հեռախոսների համար */
+@media (max-width: 700px) {
+  .events {
+    grid-template-columns: 1fr;
+  }
+
+  .event {
+    padding: 22px 18px;
+  }
+
+  .place-photo {
+    height: 240px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .full {
+    grid-column: auto;
+  }
+
+  .frame {
+    padding: 28px 17px;
+  }
+
+  .section {
+    padding: 42px 0;
+  }
+
+  .hero {
+    padding: 48px 18px;
+  }
+
+  .hero p br {
+    display: none;
+  }
+
+  .date {
+    letter-spacing: 2px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+}
 </style>
 </head>
+
 <body>
 
+<!-- Առաջին էջ -->
 <section class="cover" id="cover">
- <div class="frame">
-  <div class="ornament">❧ ✧ ❧</div>
-  <div class="eyebrow">ՍԻՐՈՎ ՀՐԱՎԻՐՈՒՄ ԵՆՔ</div>
-  <video class="cover-video" autoplay muted loop playsinline controls>
-   <source src="couple.mp4" type="video/mp4">
-  </video>
-  <h1 class="names">Արամ <span class="amp">&</span> Արմինա</h1>
-  <div class="date">28 · 08 · 2026</div>
-  <p>Մեր սիրո պատմության ամենագեղեցիկ օրը</p>
-  <button id="open">Բացել հրավիրատոմսը ♡</button>
-  <div class="ornament" style="margin:25px 0 0">❧ ✧ ❧</div>
- </div>
+  <div class="frame">
+    <div class="ornament">❧ ✧ ❧</div>
+
+    <div class="eyebrow">ՍԻՐՈՎ ՀՐԱՎԻՐՈՒՄ ԵՆՔ</div>
+
+    <video class="cover-video" autoplay muted loop playsinline controls preload="metadata">
+      <source src="couple.mp4" type="video/mp4">
+      Ձեր զննարկիչը չի աջակցում տեսանյութին։
+    </video>
+
+    <h1 class="names">Արամ <span class="amp">&</span> Արմինա</h1>
+
+    <div class="date">28 · 08 · 2026</div>
+
+    <p>Մեր սիրո պատմության ամենագեղեցիկ օրը</p>
+
+    <button id="open" type="button">Բացել հրավիրատոմսը ♡</button>
+
+    <div class="ornament" style="margin:25px 0 0">❧ ✧ ❧</div>
+  </div>
 </section>
 
+<!-- Հրավիրատոմսի հիմնական էջ -->
 <main class="invitation" id="invitation">
- <section class="hero">
-  <div class="eyebrow">ՄԵՐ ՀԱՏՈՒԿ ՕՐԸ</div>
-  <h2>Սիրով հրավիրում ենք Ձեզ</h2>
-  <p>Մեր կյանքի նոր ու գեղեցիկ էջը սկսելու օրը ցանկանում ենք<br>կիսել մեզ համար թանկ մարդկանց հետ։<br>Ուրախ կլինենք Ձեզ տեսնել մեր կողքին։</p>
-  <div class="date">28 · 08 · 2026</div>
- </section>
 
- <section class="video-section">
-  <h2>Արամ և Արմինա</h2>
-  <p class="subtitle">Սերը երկու սրտերի հանդիպումը չէ միայն, այլ ամեն օր միմյանց նորից ընտրելու ամենագեղեցիկ որոշումը։</p>
-  <div class="video-box">
-   <video class="couple-video" autoplay muted loop playsinline controls>
-    <source src="couple.mp4" type="video/mp4">
-   </video>
-  </div>
- </section>
+  <section class="hero">
+    <div class="eyebrow">ՄԵՐ ՀԱՏՈՒԿ ՕՐԸ</div>
 
- <section class="section">
-  <h2 style="text-align:center">Օրվա ծրագիրը</h2>
-  <p class="subtitle">Սիրով սպասում ենք Ձեզ՝ մեր տոնը միասին նշելու։</p>
-  <div class="events">
-   <article class="event">
-    <div class="number">01</div>
-    <h3>Հարսի տուն</h3>
-    <p class="time">10:00</p>
-   </article>
-   <article class="event">
-    <div class="number">02</div>
-    <h3>Սուրբ Սարգիս եկեղեցի</h3>
-    <img class="place-photo" src="church.jpg" alt="Սուրբ Սարգիս եկեղեցի">
-    <p class="time">13:00</p>
-    <a class="map-link" href="https://yandex.com/maps/-/CXBpJC-U" target="_blank" rel="noopener">Գտնել քարտեզում ↗</a>
-   </article>
-   <article class="event">
-    <div class="number">03</div>
-    <h3>Rubina Hall Restaurant</h3>
-    <img class="place-photo" src="restaurant.png" alt="Rubina Hall Restaurant">
-    <p class="time">17:00</p>
-    <a class="map-link" href="https://yandex.com/maps/-/CXBpFGIS" target="_blank" rel="noopener">Գտնել քարտեզում ↗</a>
-   </article>
-  </div>
- </section>
+    <h2>Սիրով հրավիրում ենք Ձեզ</h2>
 
- <section class="quote">
-  «Սերը երկու սրտերի հանդիպումը չէ միայն, այլ ամեն օր միմյանց նորից ընտրելու ամենագեղեցիկ որոշումը։»
-  <br><strong>Արամ և Արմինա</strong>
- </section>
+    <p>
+      Մեր կյանքի նոր ու գեղեցիկ էջը սկսելու օրը ցանկանում ենք<br>
+      կիսել մեզ համար թանկ մարդկանց հետ։<br>
+      Ուրախ կլինենք Ձեզ տեսնել մեր կողքին։
+    </p>
 
- <section class="rsvp" id="rsvp">
-  <div class="form">
-   <h2 style="text-align:center">Խնդրում ենք հաստատել Ձեր ներկայությունը</h2>
-   <p class="subtitle">Խնդրում ենք լրացնել տվյալները։</p>
-   <form id="rsvpForm">
-    <div class="grid">
-     <label class="field">Անուն *
-      <input id="first" required placeholder="Ձեր անունը">
-     </label>
-     <label class="field">Ազգանուն *
-      <input id="last" required placeholder="Ձեր ազգանունը">
-     </label>
-     <label class="field full">Ու՞մ կողմից եք հրավիրված *
-      <select id="side" required>
-       <option value="">Ընտրեք</option>
-       <option>Հարսի կողմից</option>
-       <option>Փեսայի կողմից</option>
-       <option>Երկուսի կողմից</option>
-      </select>
-     </label>
-     <label class="field full">Կմասնակցե՞ք *
-      <select id="answer" required>
-       <option value="">Ընտրեք պատասխանը</option>
-       <option>Այո, սիրով կմասնակցեմ</option>
-       <option>Ցավոք, չեմ կարողանա մասնակցել</option>
-      </select>
-     </label>
-     <label class="field full">Հյուրերի քանակ
-      <select id="guests">
-       <option>1 հյուր</option><option>2 հյուր</option><option>3 հյուր</option><option>4 հյուր</option><option>5 և ավելի հյուր</option>
-      </select>
-     </label>
-     <label class="field full">Մեկնաբանություն
-      <textarea id="comment" placeholder="Ցանկության դեպքում..."></textarea>
-     </label>
+    <div class="date">28 · 08 · 2026</div>
+  </section>
+
+  <section class="video-section">
+    <h2>Արամ և Արմինա</h2>
+
+    <p class="subtitle">
+      Սերը երկու սրտերի հանդիպումը չէ միայն, այլ ամեն օր
+      միմյանց նորից ընտրելու ամենագեղեցիկ որոշումը։
+    </p>
+
+    <div class="video-box">
+      <video class="couple-video" autoplay muted loop playsinline controls preload="metadata">
+        <source src="couple.mp4" type="video/mp4">
+        Ձեր զննարկիչը չի աջակցում տեսանյութին։
+      </video>
     </div>
-    <button class="submit" type="submit">Ուղարկել պատասխանը ♡</button>
-    <p class="note">Կբացվի WhatsApp-ը՝ պատրաստ հաղորդագրությամբ։</p>
-   </form>
-  </div>
- </section>
- <footer><strong>Արամ & Արմինա</strong><br>Սիրով սպասում ենք Ձեզ<br>28 · 08 · 2026</footer>
+  </section>
+
+  <section class="section">
+    <h2 style="text-align:center">Օրվա ծրագիրը</h2>
+
+    <p class="subtitle">
+      Սիրով սպասում ենք Ձեզ՝ մեր տոնը միասին նշելու։
+    </p>
+
+    <div class="events">
+
+      <article class="event">
+        <div class="number">01</div>
+        <h3>Հարսի տուն</h3>
+        <p class="time">10:00</p>
+      </article>
+
+      <article class="event">
+        <div class="number">02</div>
+        <h3>Սուրբ Սարգիս եկեղեցի</h3>
+
+        <img
+          class="place-photo"
+          src="church.jpg"
+          alt="Սուրբ Սարգիս եկեղեցի"
+          loading="lazy"
+        >
+
+        <p class="time">13:00</p>
+
+        <a
+          class="map-link"
+          href="https://yandex.com/maps/-/CXBpJC-U"
+          target="_blank"
+          rel="noopener noreferrer"
+        >Գտնել քարտեզում ↗</a>
+      </article>
+
+      <article class="event">
+        <div class="number">03</div>
+        <h3>Rubina Hall Restaurant</h3>
+
+        <img
+          class="place-photo"
+          src="restaurant.png"
+          alt="Rubina Hall Restaurant"
+          loading="lazy"
+        >
+
+        <p class="time">17:00</p>
+
+        <a
+          class="map-link"
+          href="https://yandex.com/maps/-/CXBpFGIS"
+          target="_blank"
+          rel="noopener noreferrer"
+        >Գտնել քարտեզում ↗</a>
+      </article>
+
+    </div>
+  </section>
+
+  <section class="quote">
+    «Սերը երկու սրտերի հանդիպումը չէ միայն, այլ ամեն օր
+    միմյանց նորից ընտրելու ամենագեղեցիկ որոշումը։»
+
+    <br>
+    <strong>Արամ և Արմինա</strong>
+  </section>
+
+  <section class="rsvp" id="rsvp">
+    <div class="form">
+
+      <h2 style="text-align:center">
+        Խնդրում ենք հաստատել Ձեր ներկայությունը
+      </h2>
+
+      <p class="subtitle">Խնդրում ենք լրացնել տվյալները։</p>
+
+      <form id="rsvpForm">
+        <div class="grid">
+
+          <label class="field">
+            Անուն *
+            <input
+              id="first"
+              name="first"
+              required
+              autocomplete="given-name"
+              placeholder="Ձեր անունը"
+            >
+          </label>
+
+          <label class="field">
+            Ազգանուն *
+            <input
+              id="last"
+              name="last"
+              required
+              autocomplete="family-name"
+              placeholder="Ձեր ազգանունը"
+            >
+          </label>
+
+          <label class="field full">
+            Ու՞մ կողմից եք հրավիրված *
+            <select id="side" name="side" required>
+              <option value="">Ընտրեք</option>
+              <option>Հարսի կողմից</option>
+              <option>Փեսայի կողմից</option>
+              <option>Երկուսի կողմից</option>
+            </select>
+          </label>
+
+          <label class="field full">
+            Կմասնակցե՞ք *
+            <select id="answer" name="answer" required>
+              <option value="">Ընտրեք պատասխանը</option>
+              <option>Այո, սիրով կմասնակցեմ</option>
+              <option>Ցավոք, չեմ կարողանա մասնակցել</option>
+            </select>
+          </label>
+
+          <label class="field full">
+            Հյուրերի քանակ
+            <select id="guests" name="guests">
+              <option>1 հյուր</option>
+              <option>2 հյուր</option>
+              <option>3 հյուր</option>
+              <option>4 հյուր</option>
+              <option>5 և ավելի հյուր</option>
+            </select>
+          </label>
+
+          <label class="field full">
+            Մեկնաբանություն
+            <textarea
+              id="comment"
+              name="comment"
+              placeholder="Ցանկության դեպքում..."
+            ></textarea>
+          </label>
+
+        </div>
+
+        <button class="submit" type="submit">
+          Ուղարկել պատասխանը ♡
+        </button>
+
+        <p class="note">
+          Կբացվի WhatsApp-ը՝ պատրաստ հաղորդագրությամբ։
+        </p>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <strong>Արամ &amp; Արմինա</strong>
+    <br>
+    Սիրով սպասում ենք Ձեզ
+    <br>
+    28 · 08 · 2026
+  </footer>
+
 </main>
 
-<audio id="music" loop><source src="wedding.mp3" type="audio/mpeg"></audio>
-<button class="music" id="musicButton" aria-label="Երաժշտություն">♫</button>
+<!-- Երաժշտություն -->
+<audio id="music" loop preload="none">
+  <source src="wedding.mp3" type="audio/mpeg">
+</audio>
+
+<button
+  class="music"
+  id="musicButton"
+  type="button"
+  aria-label="Միացնել երաժշտությունը"
+  aria-pressed="false"
+  title="Միացնել կամ անջատել երաժշտությունը"
+>♫</button>
 
 <script>
-const cover=document.getElementById("cover");
-const invitation=document.getElementById("invitation");
-document.getElementById("open").addEventListener("click",()=>{
- cover.style.display="none";
- invitation.classList.add("show");
- document.getElementById("musicButton").classList.add("show");
- window.scrollTo(0,0);
+const cover = document.getElementById("cover");
+const invitation = document.getElementById("invitation");
+const openButton = document.getElementById("open");
+const music = document.getElementById("music");
+const musicButton = document.getElementById("musicButton");
+
+/* Բացել հրավիրատոմսը */
+openButton.addEventListener("click", () => {
+  cover.style.display = "none";
+  invitation.classList.add("show");
+  musicButton.classList.add("show");
+
+  window.scrollTo({
+    top: 0,
+    behavior: "instant"
+  });
 });
-const music=document.getElementById("music");
-document.getElementById("musicButton").addEventListener("click",async()=>{
- if(music.paused){try{await music.play()}catch(e){alert("Երաժշտության ֆայլը պետք է լինի wedding.mp3 անունով։")}}
- else music.pause();
+
+/* Միացնել կամ անջատել երաժշտությունը */
+musicButton.addEventListener("click", async () => {
+  if (music.paused) {
+    try {
+      await music.play();
+      musicButton.classList.add("playing");
+      musicButton.textContent = "♫";
+      musicButton.setAttribute("aria-pressed", "true");
+      musicButton.setAttribute("aria-label", "Անջատել երաժշտությունը");
+    } catch (error) {
+      alert(
+        "Երաժշտությունը չի միանում։ Ստուգեք՝ wedding.mp3 ֆայլը կա՞ HTML ֆայլի հետ նույն պանակում։"
+      );
+    }
+  } else {
+    music.pause();
+    musicButton.classList.remove("playing");
+    musicButton.setAttribute("aria-pressed", "false");
+    musicButton.setAttribute("aria-label", "Միացնել երաժշտությունը");
+  }
 });
-document.getElementById("rsvpForm").addEventListener("submit",e=>{
- e.preventDefault();
- const msg="Հարսանեկան հրավիրատոմս — Արամ և Արմինա\n"+
- "Անուն՝ "+document.getElementById("first").value+"\n"+
- "Ազգանուն՝ "+document.getElementById("last").value+"\n"+
- "Հրավիրված է՝ "+document.getElementById("side").value+"\n"+
- "Մասնակցություն՝ "+document.getElementById("answer").value+"\n"+
- "Հյուրերի քանակ՝ "+document.getElementById("guests").value+"\n"+
- "Մեկնաբանություն՝ "+(document.getElementById("comment").value||"Չկա");
- window.open("https://wa.me/?text="+encodeURIComponent(msg),"_blank");
+
+/* Մասնակցության պատասխանը WhatsApp-ով */
+document.getElementById("rsvpForm").addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const first = document.getElementById("first").value.trim();
+  const last = document.getElementById("last").value.trim();
+  const side = document.getElementById("side").value;
+  const answer = document.getElementById("answer").value;
+  const guests = document.getElementById("guests").value;
+  const comment = document.getElementById("comment").value.trim();
+
+  const message =
+    "Հարսանեկան հրավիրատոմս — Արամ և Արմինա\n" +
+    "Անուն՝ " + first + "\n" +
+    "Ազգանուն՝ " + last + "\n" +
+    "Հրավիրված է՝ " + side + "\n" +
+    "Մասնակցություն՝ " + answer + "\n" +
+    "Հյուրերի քանակ՝ " + guests + "\n" +
+    "Մեկնաբանություն՝ " + (comment || "Չկա");
+
+  const whatsappUrl =
+    "https://wa.me/?text=" + encodeURIComponent(message);
+
+  window.open(whatsappUrl, "_blank", "noopener,noreferrer");
 });
 </script>
+
 </body>
 </html>
+```
