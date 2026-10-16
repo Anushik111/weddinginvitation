@@ -190,36 +190,34 @@ button, input, select {
   margin: 28px auto;
 }
 
-/* ՎԻԴԵՈՆ՝ ՀՈՐԻԶՈՆԱԿԱՆ ԼԱՅՆ, ԱՄԲՈՂՋ ԷԿՐԱՆՈՎ */
+/* ՈՒՂՂԱՀԱՅԱՑ ՎԻԴԵՈ՝ 9:16 */
 
 .video-section {
   width: 100%;
-  max-width: none;
   margin: 0 auto;
-  padding: 20px 0 65px;
+  padding: 20px 12px 65px;
 }
 
 .video-frame {
   width: 100%;
-  max-width: none;
-  margin: 0;
-  padding: 0;
+  display: flex;
+  justify-content: center;
   overflow: hidden;
   background: var(--beige);
-  line-height: 0;
 }
 
 .couple-video {
   display: block;
   width: 100%;
-  max-width: none;
+  max-width: 600px;
   height: auto;
-  aspect-ratio: 21 / 9;
+  aspect-ratio: 9 / 16;
   object-fit: cover;
   background: var(--beige);
   border: none;
   outline: none;
   pointer-events: none;
+  margin: 0 auto;
 }
 
 .date-card {
@@ -249,7 +247,7 @@ button, input, select {
   margin-top: 10px;
 }
 
-/* ԵԿԵՂԵՑԻ ԵՎ ՌԵՍՏՈՐԱՆ */
+/* ԵԿԵՂԵՑՈՒ ԵՎ ՌԵՍՏՈՐԱՆԻ ՆԿԱՐՆԵՐ */
 
 .events {
   display: grid;
@@ -433,9 +431,7 @@ footer {
 }
 
 @keyframes rotateMusic {
-  to {
-    transform: rotate(360deg);
-  }
+  to { transform: rotate(360deg); }
 }
 
 @media (max-width: 700px) {
@@ -454,12 +450,13 @@ footer {
 
   .video-section {
     width: 100%;
-    padding: 10px 0 45px;
+    padding: 10px 12px 45px;
   }
 
   .couple-video {
     width: 100%;
-    aspect-ratio: 16 / 9;
+    max-width: 430px;
+    aspect-ratio: 9 / 16;
     object-fit: cover;
   }
 
@@ -494,7 +491,6 @@ footer {
 
 <body>
 
-<!-- ԱՌԱՋԻՆ ԷՋ -->
 <section class="cover" id="cover">
   <div class="cover-card">
     <div class="ornament">❦</div>
@@ -521,7 +517,6 @@ footer {
   </div>
 </section>
 
-<!-- ՀՐԱՎԵՐԻ ՀԻՄՆԱԿԱՆ ՄԱՍ -->
 <main class="invitation" id="invitation">
 
   <section class="section">
@@ -543,7 +538,7 @@ footer {
     </p>
   </section>
 
-  <!-- ՀՈՐԻԶՈՆԱԿԱՆ ՄԵԾ ՎԻԴԵՈ -->
+  <!-- ՈՒՂՂԱՀԱՅԱՑ ՎԻԴԵՈ -->
   <section class="video-section">
     <div class="video-frame">
       <video
@@ -564,7 +559,6 @@ footer {
     </div>
   </section>
 
-  <!-- ԱՄՍԱԹԻՎ -->
   <section class="section date-card">
     <div class="eyebrow">ՊԱՀՊԱՆԵՔ ԱՅՍ ՕՐԸ</div>
     <div class="date-number">28</div>
@@ -572,7 +566,7 @@ footer {
     <div class="date-year">2026</div>
   </section>
 
-  <!-- ԵԿԵՂԵՑՈՒ ԵՎ ՌԵՍՏՈՐԱՆԻ ՆԿԱՐՆԵՐ -->
+  <!-- ԵԿԵՂԵՑԻ ԵՎ ՌԵՍՏՈՐԱՆ -->
   <section class="section">
     <div class="eyebrow">ՀԱՆԴԻՊՄԱՆ ՎԱՅՐԵՐԸ</div>
     <h2 class="section-title">Օրվա ծրագիրը</h2>
@@ -598,9 +592,7 @@ footer {
           href="https://yandex.com/maps/-/CXBpJC-U"
           target="_blank"
           rel="noopener noreferrer"
-        >
-          Ինչպե՞ս հասնել
-        </a>
+        >Ինչպե՞ս հասնել</a>
       </article>
 
       <article class="event-card">
@@ -622,15 +614,12 @@ footer {
           href="https://yandex.com/maps/-/CXBpFGIS"
           target="_blank"
           rel="noopener noreferrer"
-        >
-          Ինչպե՞ս հասնել
-        </a>
+        >Ինչպե՞ս հասնել</a>
       </article>
 
     </div>
   </section>
 
-  <!-- ՄԱՍՆԱԿՑՈՒԹՅԱՆ ՀԱՍՏԱՏՈՒՄ -->
   <section class="section">
     <form class="rsvp" id="rsvpForm">
       <div class="eyebrow">ՁԵՐ ՊԱՏԱՍԽԱՆԸ</div>
@@ -691,7 +680,6 @@ footer {
 
 </main>
 
-<!-- ՖՈՆԱՅԻՆ ԵՐԱԺՇՏՈՒԹՅՈՒՆ -->
 <audio id="backgroundMusic" loop preload="auto">
   <source src="wedding.mp3" type="audio/mpeg">
 </audio>
@@ -722,7 +710,7 @@ async function startVideo() {
   try {
     await coupleVideo.play();
   } catch (error) {
-    // Որոշ սարքեր կարող են սահմանափակել ավտոմատ նվագարկումը։
+    // Որոշ սարքեր կարող են արգելել ավտոմատ նվագարկումը։
   }
 }
 
@@ -731,7 +719,7 @@ async function startMusic() {
     await backgroundMusic.play();
     musicButton.classList.add("playing");
   } catch (error) {
-    // Բրաուզերը կարող է պահանջել օգտատիրոջ լրացուցիչ գործողություն։
+    // Եթե ավտոմատ ձայնը արգելափակվի, այն կարող է չմեկնարկել։
   }
 }
 
@@ -751,14 +739,13 @@ openButton.addEventListener("click", async () => {
   ]);
 });
 
-// Վիդեոն պահել անձայն։
 coupleVideo.addEventListener("volumechange", () => {
   if (!coupleVideo.muted) {
     coupleVideo.muted = true;
   }
 });
 
-// Երաժշտության կոճակը չի անջատում այն։
+// Երաժշտության կոճակը չի անջատում երաժշտությունը։
 musicButton.addEventListener("click", () => {
   if (backgroundMusic.paused) {
     startMusic();
@@ -778,6 +765,8 @@ document.getElementById("rsvpForm").addEventListener("submit", (event) => {
     "Մասնակցություն՝ " + attendance + "\n" +
     "Հյուրերի քանակ՝ " + guestCount;
 
+  // Փոխարինեք իրական WhatsApp համարով՝ երկրի կոդով,
+  // առանց + նշանի, բացատների կամ գծիկների։
   const whatsappNumber = "374XXXXXXXX";
 
   const whatsappUrl =
